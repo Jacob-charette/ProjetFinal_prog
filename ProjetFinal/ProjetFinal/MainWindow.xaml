@@ -7,8 +7,24 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Mjje</Button>
-        <TextBlock Text="salur noel mmm"></TextBlock>
-    </StackPanel>
+    <Grid>
+        <NavigationView PaneTitle="Navigation" x:Name="navView"
+                        SelectionChanged="navView_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Différente Page"/>
+                <NavigationViewItem Content="Ajouter" x:Name="iAjouter" Icon="Add"/>
+                <NavigationViewItem Content="Recherche" x:Name="iRecherche" Icon="Zoom"/>
+                <NavigationViewItem Content="Afficher" x:Name="iAfficher" Icon="View"/>
+                <NavigationViewItemSeparator />
+                <NavigationViewItem Content="CSV" x:Name="iCSV" Icon="Download"/>
+            </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Déconnexion" x:Name="iDeconnexion" Icon="Switch" />
+                <NavigationViewItem Content="Aide" x:Name="iAide" Icon="Help" />
+            </NavigationView.FooterMenuItems>
+
+            <Frame x:Name="mainFrame"/>
+        </NavigationView>
+    </Grid>
 </Window>
