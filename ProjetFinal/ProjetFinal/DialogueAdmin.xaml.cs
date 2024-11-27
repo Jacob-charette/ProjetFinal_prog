@@ -18,7 +18,7 @@ using Windows.Foundation.Collections;
 
 namespace ProjetFinal
 {
-    public sealed partial class DialogueAdmin : UserControl
+    public sealed partial class DialogueAdmin : ContentDialog
     {
         public DialogueAdmin()
         {
