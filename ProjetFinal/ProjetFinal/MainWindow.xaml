@@ -12,10 +12,9 @@
         <NavigationView PaneTitle="Navigation" x:Name="navView"
                         SelectionChanged="navView_SelectionChanged">
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Différente Page"/>
-                <NavigationViewItem Content="Ajouter" x:Name="iAjouter" Icon="Add"/>
-                <NavigationViewItem Content="Recherche" x:Name="iRecherche" Icon="Zoom"/>
-                <NavigationViewItem Content="Afficher" x:Name="iAfficher" Icon="View"/>
+                <NavigationViewItemHeader Content="Ahérent"/>
+                <NavigationViewItem Content="Activités" x:Name="iActivite" Icon="Contact"/>
+                <NavigationViewItem Content="Statistiques" x:Name="iStatistique" Icon="Calculator"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="CSV" x:Name="iCSV" Icon="Download"/>
             </NavigationView.MenuItems>

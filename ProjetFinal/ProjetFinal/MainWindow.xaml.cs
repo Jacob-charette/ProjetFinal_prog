@@ -34,11 +34,11 @@ namespace ProjetFinal
 
             switch (item.Name)
             {
-                case "iAjouter":
-                    mainFrame.Navigate(typeof(PageAjout));
-                    break;
-                case "iAfficher":
+                case "iActivite":
                     mainFrame.Navigate(typeof(PageAffichage));
+                    break;
+                case "iStatistique":
+                    mainFrame.Navigate(typeof(PageStatistique));
                     break;
                 default:
                     break;
