@@ -8,7 +8,45 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock x:Name="titre_page">Page d'affichage</TextBlock>
-    </Grid>
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="tbl_titre" 
+                   Text="Liste des activités" 
+                   Margin="20" 
+                   HorizontalAlignment="Center" 
+                   FontSize="40"
+                   FontWeight="Light"
+                   />
+
+            <GridView x:Name="lv_liste" SelectionChanged="lv_liste_SelectionChanged" 
+                  ItemsSource="{x:Bind liste}">
+                <!-- Template-->
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Activite">
+                        <StackPanel Orientation="Vertical" Width="200" Background="AliceBlue"
+                                Margin="15" 
+                                HorizontalAlignment="Stretch"
+                                >
+                            <Image x:Name="img" Source="{x:Bind Photo}" Height="150" Margin="10"/>
+                            <TextBlock Text="{x:Bind id_Activite, Mode=OneWay}" FontSize="27" HorizontalAlignment="Center" FontWeight="Light" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock Text="{x:Bind cout_organisation, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx" Text="{x:Bind prix_vente, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx" Text="{x:Bind id_Admin, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx" Text="{x:Bind id_categorie, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
+                                <Button Click="Button_Click2">
+                                    <SymbolIcon Symbol="Edit" Foreground="blue"/>
+                                </Button>
+                                <Button Click="Button_Click" >
+                                    <SymbolIcon Symbol="Delete" Foreground="Red"/>
+                                </Button>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            
+        </StackPanel>
+    </ScrollViewer>
 </Page>
