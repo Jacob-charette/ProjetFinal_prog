@@ -29,7 +29,7 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
         }
-
+        //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lv_liste.SelectedItem != null)
