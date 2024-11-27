@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetFinal
 {
-    internal class Seance
+    internal class Singleton
     {
     }
 }
