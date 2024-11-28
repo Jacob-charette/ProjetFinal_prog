@@ -8,8 +8,8 @@ namespace ProjetFinal
 {
     internal class Seance
     {
-        string date_organisation, heure_organisation;
-        int nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent;
+        string date_organisation, heure_organisation, id_Adherent;
+        int nbr_place_disponible, note_appreciation, id_Admin, id_Activite;
 
 
         public Seance()
@@ -21,10 +21,10 @@ namespace ProjetFinal
             this.note_appreciation = 0;
             this.id_Admin = 0;
             this.id_Activite = 0;
-            this.id_Adherent = 0;
+            this.id_Adherent = "";
 
         }
-        public Seance(string date_organisation, string heure_organisation, int nbr_place_disponible, int note_appreciation, int id_Admin, int id_Activite, int id_Adherent)
+        public Seance(string date_organisation, string heure_organisation, int nbr_place_disponible, int note_appreciation, int id_Admin, int id_Activite, string id_Adherent)
         {
             this.date_organisation = date_organisation;
             this.heure_organisation = heure_organisation;
@@ -41,7 +41,7 @@ namespace ProjetFinal
         public int Note_appreciation { get => note_appreciation; set => note_appreciation = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
         public int Id_Activite { get => id_Activite; set => id_Activite = value; }
-        public int Id_Adherent { get => id_Adherent; set => id_Adherent = value; }
+        public string Id_Adherent { get => id_Adherent; set => id_Adherent = value; }
 
 
 

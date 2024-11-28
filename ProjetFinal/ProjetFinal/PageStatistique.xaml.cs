@@ -25,7 +25,7 @@ namespace ProjetFinal
     {
         public PageStatistique()
         {
-            this.InitializeComponent();
+            
         }
     }
 }

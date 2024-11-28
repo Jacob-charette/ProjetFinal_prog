@@ -28,21 +28,27 @@ namespace ProjetFinal
         public PageAffichage()
         {
             this.InitializeComponent();
+            lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite;
+            
         }
         //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var selectedItem = lv_liste.SelectedItem as Activite;
             if (lv_liste.SelectedItem != null)
             {
-                DialogActivite dialog = new DialogActivite();
+                string nomActivite = selectedItem.Nom;
+                DialogAdherent dialog = new DialogAdherent();
+                dialog.ActiviteNom=selectedItem;
+
                 dialog.XamlRoot = lv_liste.XamlRoot;
-                dialog.Title = "Mon titre";
+                dialog.Title = "Connexion Participant";
                 dialog.PrimaryButtonText = "Se connecter";
                 dialog.CloseButtonText = "Annuler";
                 dialog.DefaultButton = ContentDialogButton.Primary;
-                //dialog.Content = "Mon contenu";
-
-                ContentDialogResult resultat = await dialog.ShowAsync(); // Mettre "async" après "private"
+              
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            
 
             }
         }

@@ -1,0 +1,37 @@
+﻿<ContentDialog
+    x:Class="ProjetFinal.DialogAdherent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    Closing="ContentDialog_Closing">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Connexion de l'adherent" Margin="15" FontSize="40" 
+           FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
+           HorizontalAlignment="Center"/>
+
+        <StackPanel Grid.Row="1" Padding="5" Grid.ColumnSpan="2" >
+            <TextBox x:Name="tbxAdherent"  Header="Identifiant du paticipant" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblAdherenErreur" Foreground="Red" FontSize="15" />
+        </StackPanel>
+        <TextBlock x:Name="oui"></TextBlock>
+    </Grid>
+</ContentDialog>

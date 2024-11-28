@@ -18,8 +18,7 @@
                    FontWeight="Light"
                    />
 
-            <GridView x:Name="lv_liste" SelectionChanged="lv_liste_SelectionChanged" 
-                  ItemsSource="{x:Bind liste}">
+            <GridView x:Name="lv_liste" SelectionChanged="lv_liste_SelectionChanged" >
                 <!-- Template-->
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local:Activite">
@@ -27,17 +26,17 @@
                                 Margin="15" 
                                 HorizontalAlignment="Stretch"
                                 >
-                            <Image x:Name="img" Source="{x:Bind Photo}" Height="150" Margin="10"/>
-                            <TextBlock Text="{x:Bind id_Activite, Mode=OneWay}" FontSize="27" HorizontalAlignment="Center" FontWeight="Light" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock Text="{x:Bind cout_organisation, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx" Text="{x:Bind prix_vente, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx" Text="{x:Bind id_Admin, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx" Text="{x:Bind id_categorie, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <Image x:Name="img" Source="{x:Bind Image}" Height="150" Margin="10"/>
+                            <TextBlock Text="{x:Bind Nom, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx" Text="{x:Bind Prix_vente, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx0" Text="{x:Bind Cout_organisation, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBox x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <Button Click="Button_Click2">
+                                <Button >
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
-                                <Button Click="Button_Click" >
+                                <Button  >
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
                             </StackPanel>

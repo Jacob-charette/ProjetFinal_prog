@@ -18,9 +18,12 @@ using Windows.Foundation.Collections;
 
 namespace ProjetFinal
 {
-    public sealed partial class DialogueAdmin : ContentDialog
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class DetailActivite : Page
     {
-        public DialogueAdmin()
+        public DetailActivite()
         {
             this.InitializeComponent();
         }
