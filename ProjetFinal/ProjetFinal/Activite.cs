@@ -43,6 +43,35 @@ namespace ProjetFinal
         public string Image { get => image; set => image = value; }
         public string Nom { get => nom; set => nom = value; }
         public string NomActivite { get; set; }
+        public string Prix_vente_string
+        {
+            get => "Prix vente: " + prix_vente + "$"; set
+            {
+                if (int.TryParse(value.Replace("$", ""), out int parsedValue))
+                {
+                    prix_vente = parsedValue;
+                }
+                if (int.TryParse(value.Replace("Prix vente: ", ""), out int parsedValue2))
+                {
+                    prix_vente = parsedValue2;
+                }
+            }
+        }
+
+        public string Cout_organisation_string
+        {
+            get => "Cout d'organisation: " + cout_organisation + "$"; set
+            {
+                if (int.TryParse(value.Replace("$", ""), out int parsedValue))
+                {
+                    prix_vente = parsedValue;
+                }
+                if (int.TryParse(value.Replace("Cout d'organisation: ", ""), out int parsedValue2))
+                {
+                    prix_vente = parsedValue2;
+                }
+            }
+        }
 
 
         public override string ToString()

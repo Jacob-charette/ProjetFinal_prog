@@ -28,10 +28,10 @@
                                 >
                             <Image x:Name="img" Source="{x:Bind Image}" Height="150" Margin="10"/>
                             <TextBlock Text="{x:Bind Nom, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx" Text="{x:Bind Prix_vente, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx0" Text="{x:Bind Cout_organisation, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBox x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Background="LightGray" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbx" Text="{x:Bind Prix_vente_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbx0" Text="{x:Bind Cout_organisation_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
                                 <Button >
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>

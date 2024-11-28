@@ -37,7 +37,7 @@ namespace ProjetFinal
             var selectedItem = lv_liste.SelectedItem as Activite;
             if (lv_liste.SelectedItem != null)
             {
-                DialogChoixSeance dialog = new DialogChoixSeance();
+                DialogChoixSeance dialog = new DialogChoixSeance(selectedItem.Id_Activite);
                 dialog.Id_Activite = selectedItem.Id_Activite;
                 dialog.XamlRoot = lv_liste.XamlRoot;
                 dialog.Title = "Boite de dialog";

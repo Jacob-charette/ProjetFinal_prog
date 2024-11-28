@@ -25,10 +25,10 @@ namespace ProjetFinal
         public int Id_Activite { get; internal set; }
         public int Nbr_place_disponible { get; internal set; }
 
-        public DialogChoixSeance()
+        public DialogChoixSeance(int idActivite)
         {
             this.InitializeComponent();
-            lv_liste.ItemsSource = SingletonListe.getInstance().getIdActivite(Id_Activite);
+            lv_liste.ItemsSource = SingletonListe.getInstance().getIdActivite(idActivite);
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)

@@ -166,7 +166,7 @@ namespace ProjetFinal
         {
             ObservableCollection<Seance> filteredSeances = new ObservableCollection<Seance>();
 
-            //Liste pour activite
+            //Liste pour Seance
             MySqlCommand commande6 = new MySqlCommand();
             commande6.Connection = con;
             commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
