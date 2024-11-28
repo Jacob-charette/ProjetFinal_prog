@@ -43,11 +43,10 @@ namespace ProjetFinal
                 case "iConnection":
                     DialogAdherent dialog = new DialogAdherent();
                     dialog.XamlRoot = nvih_text.XamlRoot;
-                    dialog.Title = "Mon titre";
+                    dialog.Title = "Boite de dialog";
                     dialog.PrimaryButtonText = "Se connecter";
                     dialog.CloseButtonText = "Annuler";
                     dialog.DefaultButton = ContentDialogButton.Primary;
-                    //dialog.Content = "Mon contenu";
 
                     ContentDialogResult resultat = await dialog.ShowAsync(); // Mettre "async" après "private"
                     break;
