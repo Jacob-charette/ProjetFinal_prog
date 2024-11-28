@@ -37,19 +37,15 @@ namespace ProjetFinal
             var selectedItem = lv_liste.SelectedItem as Activite;
             if (lv_liste.SelectedItem != null)
             {
-                string nomActivite = selectedItem.Nom;
-                DialogAdherent dialog = new DialogAdherent();
-                dialog.ActiviteNom=selectedItem;
-
+                DialogChoixSeance dialog = new DialogChoixSeance();
+                dialog.Id_Activite = selectedItem.Id_Activite;
                 dialog.XamlRoot = lv_liste.XamlRoot;
-                dialog.Title = "Connexion Participant";
-                dialog.PrimaryButtonText = "Se connecter";
+                dialog.Title = "Boite de dialog";
+                dialog.PrimaryButtonText = "Valider";
                 dialog.CloseButtonText = "Annuler";
                 dialog.DefaultButton = ContentDialogButton.Primary;
               
                 ContentDialogResult resultat = await dialog.ShowAsync();
-            
-
             }
         }
     }

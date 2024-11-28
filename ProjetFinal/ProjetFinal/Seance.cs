@@ -14,7 +14,6 @@ namespace ProjetFinal
 
         public Seance()
         {
-
             this.date_organisation = "";
             this.heure_organisation = "";
             this.nbr_place_disponible = 0;

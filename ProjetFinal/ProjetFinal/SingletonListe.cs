@@ -10,6 +10,8 @@ namespace ProjetFinal
 {
     internal class SingletonListe
     {
+        static SingletonListe instance = null;
+
         public static SingletonListe getInstance()
         {
 
@@ -19,14 +21,15 @@ namespace ProjetFinal
             return instance;
 
         }
+
         MySqlConnection con;
         ObservableCollection<Administrateur> listeAdmin;
         ObservableCollection<Adherent> listeAdherent;
         ObservableCollection<Activite> listeActivite;
         ObservableCollection<Categorie> listeCategorie;
         ObservableCollection<Seance> listeSeance;
-
-        static SingletonListe instance = null;
+        ObservableCollection<Seance> listeActiviteId;
+        
 
         //ObservableCollection<Equipes> liste;
         // static SingletonListe instance = null;
@@ -36,6 +39,7 @@ namespace ProjetFinal
             listeAdmin = new ObservableCollection<Administrateur>();
             listeAdherent = new ObservableCollection<Adherent>();
             listeActivite = new ObservableCollection<Activite>();
+            listeActiviteId = new ObservableCollection<Seance>();
             listeCategorie = new ObservableCollection<Categorie>();
             listeSeance = new ObservableCollection<Seance>();
             con = new MySqlConnection("Server=cours.cegep3r.info;Database=a2024_420335ri_eq7;" +
@@ -44,6 +48,7 @@ namespace ProjetFinal
             listeAdmin.Clear();
             listeAdherent.Clear();
             listeActivite.Clear();
+            listeActiviteId.Clear();
             listeCategorie.Clear();
             listeSeance.Clear();
 
@@ -94,14 +99,16 @@ namespace ProjetFinal
             while (r3.Read())
 
             {
+                int id_Activite = Convert.ToInt16(r3[0].ToString());
                 int cout_organisation = Convert.ToInt16(r3[1].ToString());
                 int prix_vente = Convert.ToInt16(r3[2].ToString());
                 int id_Admin = Convert.ToInt16(r3[3].ToString());
                 int id_categorie = Convert.ToInt16(r3[4].ToString());
                 string image = r3[5].ToString();
                 string nom = r3[6].ToString();
+               
 
-                listeActivite.Add(new Activite(cout_organisation, prix_vente, id_Admin, id_categorie, image, nom));
+                listeActivite.Add(new Activite(id_Activite, cout_organisation, prix_vente, id_Admin, id_categorie, image, nom));
 
             }
             r3.Close();
@@ -152,8 +159,36 @@ namespace ProjetFinal
             }
             r5.Close();
             con.Close();
-    }
+        }
             public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
+
+        public ObservableCollection<Seance> getIdActivite(int _id_activite)
+        {
+            ObservableCollection<Seance> filteredSeances = new ObservableCollection<Seance>();
+
+            //Liste pour activite
+            MySqlCommand commande6 = new MySqlCommand();
+            commande6.Connection = con;
+            commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
+            con.Open();
+            MySqlDataReader r6 = commande6.ExecuteReader();
+            while (r6.Read())
+            {
+                string date_organisation = r6[1].ToString();
+                string heure_organisation = r6[2].ToString();
+                int nbr_place_disponible = Convert.ToInt16(r6[3].ToString());
+                int note_appreciation = Convert.ToInt16(r6[4].ToString());
+                int id_Admin = Convert.ToInt16(r6[5].ToString());
+                int id_Activite = Convert.ToInt16(r6[6].ToString());
+                string id_Adherent = r6[7].ToString();
+
+                filteredSeances.Add(new Seance(date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
+
+            }
+            r6.Close();
+            con.Close();
+            return filteredSeances;
+        }
     }
 
 

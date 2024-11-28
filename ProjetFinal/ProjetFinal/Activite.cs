@@ -8,12 +8,13 @@ namespace ProjetFinal
 {
     public class Activite
     {
-        int cout_organisation, prix_vente, id_Admin, id_categorie;
+        int cout_organisation, prix_vente, id_Admin, id_categorie, id_Activite;
         string image,nom;
 
 
         public Activite()
         {
+            this.id_Activite=0;
             this.cout_organisation = 0;
             this.prix_vente = 0;
             this.id_Admin = 0;
@@ -23,8 +24,9 @@ namespace ProjetFinal
 
         }
         
-        public Activite(int cout_organisation, int prix_vente, int id_Admin, int id_categorie,string image,string nom)
+        public Activite(int id_Activite, int cout_organisation, int prix_vente, int id_Admin, int id_categorie,string image,string nom)
         {
+            this.id_Activite = id_Activite;
             this.cout_organisation = cout_organisation;
             this.prix_vente = prix_vente;
             this.id_Admin = id_Admin;
@@ -33,6 +35,7 @@ namespace ProjetFinal
             this.nom = nom;
         }
 
+        public int Id_Activite { get => id_Activite; set => id_Activite = value; }
         public int Cout_organisation { get => cout_organisation; set => cout_organisation = value; }
         public int Prix_vente { get => prix_vente; set => prix_vente = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
