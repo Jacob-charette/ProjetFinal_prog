@@ -46,7 +46,7 @@ namespace ProjetFinal
 
         public override string ToString()
         {
-            return " ";
+            return $"{date_organisation} - {heure_organisation}";
         }
     }
 }
