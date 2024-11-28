@@ -28,7 +28,7 @@ namespace ProjetFinal
             this.InitializeComponent();
         }
 
-        private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private async void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
 
@@ -40,9 +40,21 @@ namespace ProjetFinal
                 case "iStatistique":
                     mainFrame.Navigate(typeof(PageStatistique));
                     break;
+                case "iConnection":
+                    DialogAdherent dialog = new DialogAdherent();
+                    dialog.XamlRoot = nvih_text.XamlRoot;
+                    dialog.Title = "Mon titre";
+                    dialog.PrimaryButtonText = "Se connecter";
+                    dialog.CloseButtonText = "Annuler";
+                    dialog.DefaultButton = ContentDialogButton.Primary;
+                    //dialog.Content = "Mon contenu";
+
+                    ContentDialogResult resultat = await dialog.ShowAsync(); // Mettre "async" après "private"
+                    break;
                 default:
                     break;
             }
+            
         }
     }
 }

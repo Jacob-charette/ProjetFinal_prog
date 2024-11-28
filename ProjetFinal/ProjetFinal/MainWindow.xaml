@@ -11,11 +11,13 @@
         <NavigationView PaneTitle="Navigation" x:Name="navView"
                         SelectionChanged="navView_SelectionChanged">
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Ahérent"/>
+                <NavigationViewItemHeader x:Name="nvih_text" Content="Ahérent"/>
                 <NavigationViewItem Content="Activités" x:Name="iActivite" Icon="Contact"/>
                 <NavigationViewItem Content="Statistiques" x:Name="iStatistique" Icon="Calculator"/>
                 <NavigationViewItemSeparator />
+                <NavigationViewItemSeparator />
                 <NavigationViewItem Content="CSV" x:Name="iCSV" Icon="Download"/>
+                <NavigationViewItem Content="Connection" x:Name="iConnection" Icon="GoToStart"/>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
