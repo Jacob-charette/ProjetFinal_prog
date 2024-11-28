@@ -21,6 +21,7 @@ namespace ProjetFinal
 {
     public sealed partial class DialogChoixSeance : ContentDialog
     {
+        bool valide;
         public int Id_Activite { get; internal set; }
         public int Nbr_place_disponible { get; internal set; }
 
