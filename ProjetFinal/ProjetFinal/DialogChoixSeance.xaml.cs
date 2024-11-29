@@ -19,6 +19,7 @@ using Windows.Foundation.Collections;
 
 namespace ProjetFinal
 {
+    //lo
     public sealed partial class DialogChoixSeance : ContentDialog
     {
         bool valide;
