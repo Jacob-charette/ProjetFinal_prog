@@ -29,9 +29,18 @@
            HorizontalAlignment="Center"/>
 
         <StackPanel Grid.Row="1" Padding="5" Grid.ColumnSpan="2" >
-            <TextBox x:Name="tbxAdherent"  Header="Identifiant du paticipant" VerticalAlignment="Top"/>
+            <CheckBox x:Name="Adherent" Content="Adherent" Checked="Adherent_Checked" Unchecked="Adherent_Unchecked"/>
+            <CheckBox x:Name="Administrateur" Content="Administrateur" Checked="Administrateur_Checked" Unchecked="Administrateur_Unchecked" />
+            <TextBlock x:Name="chkError" Foreground="Red" FontSize="15" />
+            <TextBox x:Name="tbxAdminNom" Visibility="Collapsed" Header="Identifiant du paticipant" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblAdminNomError" Foreground="Red" FontSize="15" />
+            <TextBox x:Name="tbxAdherent" Visibility="Collapsed" Header="Nom d'utilisateur Administrateur" VerticalAlignment="Top"/>
             <TextBlock x:Name="tblAdherenErreur" Foreground="Red" FontSize="15" />
+            <PasswordBox x:Name="tbxAdminPassword" Visibility="Collapsed" Header="Mot de passe Administrateur" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblAdminPasswordError" Foreground="Red" FontSize="15" />
+            
         </StackPanel>
         <TextBlock x:Name="oui"></TextBlock>
+        <Frame x:Name="DialogueConnexion"  />
     </Grid>
 </ContentDialog>

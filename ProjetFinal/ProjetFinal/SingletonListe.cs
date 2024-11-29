@@ -29,7 +29,7 @@ namespace ProjetFinal
         ObservableCollection<Categorie> listeCategorie;
         ObservableCollection<Seance> listeSeance;
         ObservableCollection<Seance> listeActiviteId;
-        
+
 
         //ObservableCollection<Equipes> liste;
         // static SingletonListe instance = null;
@@ -106,7 +106,7 @@ namespace ProjetFinal
                 int id_categorie = Convert.ToInt16(r3[4].ToString());
                 string image = r3[5].ToString();
                 string nom = r3[6].ToString();
-               
+
 
                 listeActivite.Add(new Activite(id_Activite, cout_organisation, prix_vente, id_Admin, id_categorie, image, nom));
 
@@ -131,7 +131,7 @@ namespace ProjetFinal
                 int age = Convert.ToInt16(r4[5].ToString());
                 int id_Admin = Convert.ToInt16(r4[6].ToString());
 
-                listeAdherent.Add(new Adherent(id_Adherent, nom, prenom, adresse, date_naissance,age,id_Admin));
+                listeAdherent.Add(new Adherent(id_Adherent, nom, prenom, adresse, date_naissance, age, id_Admin));
 
             }
             r4.Close();
@@ -160,7 +160,9 @@ namespace ProjetFinal
             r5.Close();
             con.Close();
         }
-            public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
+        public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
+        public ObservableCollection<Adherent> ListeAdherent { get { return listeAdherent; } }
+        public ObservableCollection<Seance> ListeSeance { get { return listeSeance; } }
 
         public ObservableCollection<Seance> getIdActivite(int _id_activite)
         {
@@ -188,6 +190,51 @@ namespace ProjetFinal
             r6.Close();
             con.Close();
             return filteredSeances;
+        }
+
+        public bool connexionAdmin(string nom,string password)
+        {
+            int verificationAdmin = 0;
+            MySqlCommand commande7 = new MySqlCommand();
+            commande7.Connection = con;
+            commande7.CommandText = $"Select * from administrateur where nom_utilisateur ='{nom}' AND password='{password}'";
+            con.Open();
+            MySqlDataReader r7 = commande7.ExecuteReader();
+            while (r7.Read())
+            {
+                verificationAdmin++;
+            }
+            r7.Close();
+            con.Close();
+            if (verificationAdmin > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+            
+        }
+        public bool connexionAdherent(string nom)
+        {
+            int verificationAdherent= 0;
+            MySqlCommand commande8 = new MySqlCommand();
+            commande8.Connection = con;
+            commande8.CommandText = $"Select * from adherents where id_Adherent ='{nom}'";
+            con.Open();
+            MySqlDataReader r8 = commande8.ExecuteReader();
+            while (r8.Read())
+            {
+                verificationAdherent++;
+            }
+            r8.Close();
+            con.Close();
+            if (verificationAdherent > 0)
+            {
+                return true;
+            }
+            else
+                return false;
+
         }
     }
 

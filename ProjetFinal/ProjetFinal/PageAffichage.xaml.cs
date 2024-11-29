@@ -29,7 +29,10 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite;
-            
+            lv_listeAdherent.ItemsSource=SingletonListe.getInstance().ListeAdherent;
+            lvListeSeances.ItemsSource=SingletonListe.getInstance().ListeSeance;
+
+
         }
         //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -45,6 +48,28 @@ namespace ProjetFinal
                 dialog.CloseButtonText = "Annuler";
                 dialog.DefaultButton = ContentDialogButton.Primary;
               
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
+        }
+
+        private async void DeleteActivity_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var produit = (Activite)button.DataContext;
+            var index = SingletonListe.getInstance().ListeActivite.IndexOf(produit);
+
+            //    gvListe.SelectedIndex = index;
+           
+            var selectedItem = lv_liste.SelectedItem as Activite;
+            if (lv_liste.SelectedItem != null)
+            {
+                DialogueSuppressionActivite dialog = new DialogueSuppressionActivite();
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Confirmation de suppression";
+                dialog.PrimaryButtonText = "Oui";
+                dialog.CloseButtonText = "Nom";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
                 ContentDialogResult resultat = await dialog.ShowAsync();
             }
         }

@@ -1,0 +1,19 @@
+﻿<UserControl
+    x:Class="ProjetFinal.DialogueSuppressionActivite"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <TextBlock Text="Une suppression de cette ativite entrainera la suppression des seances reliées/n
+                   voulez-vous continuer ?" Margin="15" FontSize="40" 
+           FontFamily="Terminal"  FontWeight="SemiBold"
+           HorizontalAlignment="Center"/>
+
+            <Frame x:Name="DialogueDeleteActivite"  />
+        </Grid>
+    
+</UserControl>
