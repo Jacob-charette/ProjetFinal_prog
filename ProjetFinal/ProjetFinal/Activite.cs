@@ -8,8 +8,8 @@ namespace ProjetFinal
 {
     public class Activite
     {
-        int cout_organisation, prix_vente, id_Admin, id_categorie, id_Activite;
-        string image,nom;
+        int cout_organisation, prix_vente, id_Admin, id_categorie, id_Activite, nombre_Adherent;
+        string image, nom;
 
 
         public Activite()
@@ -35,8 +35,16 @@ namespace ProjetFinal
             this.nom = nom;
         }
 
+        public Activite(string nom, int nombreAdherents)
+        {
+            Nom = nom;
+            nombre_Adherent = nombreAdherents;
+        }
+
+
         public int Id_Activite { get => id_Activite; set => id_Activite = value; }
         public int Cout_organisation { get => cout_organisation; set => cout_organisation = value; }
+        public int Nombre_Adherent { get => nombre_Adherent; set => nombre_Adherent = value; }
         public int Prix_vente { get => prix_vente; set => prix_vente = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
         public int Id_categorie { get => id_categorie; set => id_categorie = value; }

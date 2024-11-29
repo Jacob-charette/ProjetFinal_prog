@@ -13,9 +13,16 @@
         <StackPanel Orientation="Vertical">
             <TextBlock x:Name="tbl_titre" 
                    Text="Liste des activités" 
-                   Margin="20" 
+                   Margin="10" 
                    HorizontalAlignment="Center" 
                    FontSize="40"
+                   FontWeight="Light"
+                   />
+            <TextBlock x:Name="tbl_sous_titre" 
+                   Text="CLiquer sur l'une des activités pour choisir une séance" 
+                   Margin="10" 
+                   HorizontalAlignment="Center" 
+                   FontSize="20"
                    FontWeight="Light"
                    />
 
@@ -34,12 +41,14 @@
                             <TextBlock x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <Button >
+                                <!--
+                                <Button>
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
-                                <Button  >
+                                <Button>
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
+                                -->
                             </StackPanel>
 
                         </StackPanel>

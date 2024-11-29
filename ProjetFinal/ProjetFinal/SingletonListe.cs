@@ -26,6 +26,7 @@ namespace ProjetFinal
         ObservableCollection<Administrateur> listeAdmin;
         ObservableCollection<Adherent> listeAdherent;
         ObservableCollection<Activite> listeActivite;
+        ObservableCollection<Activite> listeActivite2;
         ObservableCollection<Categorie> listeCategorie;
         ObservableCollection<Seance> listeSeance;
         ObservableCollection<Seance> listeActiviteId;
@@ -39,6 +40,7 @@ namespace ProjetFinal
             listeAdmin = new ObservableCollection<Administrateur>();
             listeAdherent = new ObservableCollection<Adherent>();
             listeActivite = new ObservableCollection<Activite>();
+            listeActivite2 = new ObservableCollection<Activite>();
             listeActiviteId = new ObservableCollection<Seance>();
             listeCategorie = new ObservableCollection<Categorie>();
             listeSeance = new ObservableCollection<Seance>();
@@ -48,6 +50,7 @@ namespace ProjetFinal
             listeAdmin.Clear();
             listeAdherent.Clear();
             listeActivite.Clear();
+            listeActivite2.Clear();
             listeActiviteId.Clear();
             listeCategorie.Clear();
             listeSeance.Clear();
@@ -159,8 +162,30 @@ namespace ProjetFinal
             }
             r5.Close();
             con.Close();
+
+            //Liste pour activite et adhérent
+            MySqlCommand commande7 = new MySqlCommand();
+            commande7.Connection = con;
+            commande7.CommandText =     "SELECT c.nom AS Activite, COUNT(DISTINCT asn.id_Adherent) AS Nombre_Adherents " +
+                                        "from activites a " +
+                                        "JOIN seances s ON a.id_Activite = s.id_Activite " +
+                                        "JOIN adherent_seance asn ON s.id_seance = asn.id_seance " +
+                                        "JOIN categories c ON a.id_categorie = c.id_categorie " +
+                                        "GROUP BY c.nom;";
+            con.Open();
+            MySqlDataReader r7 = commande7.ExecuteReader();
+            while (r7.Read())
+            {
+                string nomActivite = r7["Activite"].ToString();
+                int nombreAdherents = Convert.ToInt32(r7["Nombre_Adherents"]);
+
+                listeActivite2.Add(new Activite(nomActivite, nombreAdherents));
+            }
+            r7.Close();
+            con.Close();
         }
             public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
+            public ObservableCollection<Activite> ListeActivite2 { get { return listeActivite2; } }
 
         public ObservableCollection<Seance> getIdActivite(int _id_activite)
         {
