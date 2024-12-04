@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Data;
+using Microsoft.UI.Xaml.Controls.Primitives;
 
 namespace ProjetFinal
 {
@@ -120,9 +121,166 @@ namespace ProjetFinal
             r7.Close();
             con.Close();
         }
-            public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
+        public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
         public ObservableCollection<Adherent> ListeAdherent { get { return listeAdherent; } }
         public ObservableCollection<Seance> ListeSeance { get { return listeSeance; } }
+        public ObservableCollection<Activite> ListeActivite2 { get { return listeActivite2; } }
+
+        /********************************************************************************************************************************************************************/
+        /********************************************************************************************************************************************************************/
+        public int getNbrAdherent()
+        {
+            int nbrAdherents = 0;
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT COUNT(DISTINCT id_Adherent) FROM adherents;";
+
+                con.Open();
+                nbrAdherents = Convert.ToInt32(commande.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+                // Vous pouvez aussi gérer l'exception (par exemple, en journalisant l'erreur)
+                Console.WriteLine("Erreur : " + ex.Message);
+            }
+
+            return nbrAdherents;
+        }
+
+        public int getNbrActivite()
+        {
+            int nbrActivites = 0;
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT COUNT(DISTINCT id_Activite) FROM activites;";
+
+                con.Open();
+                nbrActivites = Convert.ToInt32(commande.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+                Console.WriteLine("Erreur : " + ex.Message);
+            }
+
+            return nbrActivites;
+        }
+
+        public int getNbrSeance()
+        {
+            int nbrSeances = 0;
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT COUNT(DISTINCT id_seance) FROM seances;";
+
+                con.Open();
+                nbrSeances = Convert.ToInt32(commande.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+                Console.WriteLine("Erreur : " + ex.Message);
+            }
+
+            return nbrSeances;
+        }
+
+        public int getNbrCategorie()
+        {
+            int nbrCategories = 0;
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT COUNT(DISTINCT id_Categorie) FROM categories;";
+
+                con.Open();
+                nbrCategories = Convert.ToInt32(commande.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+                // Vous pouvez aussi gérer l'exception (par exemple, en journalisant l'erreur)
+                Console.WriteLine("Erreur : " + ex.Message);
+            }
+
+            return nbrCategories;
+        }
+
+        public int getMoyenneNoteApp()
+        {
+            int moyNoteApp = 0;
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT AVG(note_appreciation) FROM seances;";
+
+                con.Open();
+                moyNoteApp = Convert.ToInt32(commande.ExecuteScalar());
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+                Console.WriteLine("Erreur : " + ex.Message);
+            }
+
+            return moyNoteApp;
+        }
+
+        public string getParticipantPlusActif()
+        {
+            string participantPlusActif = "";
+            try
+            {
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = "SELECT id_Adherent from (" +
+                    "SELECT id_Adherent, COUNT(id_seance) AS total_seances " +
+                    "FROM Adherent_Seance " +
+                    "GROUP BY id_Adherent " +
+                    "ORDER BY total_seances DESC " +
+                    "LIMIT 1) AS subquery";
+
+                con.Open();
+                var result = commande.ExecuteScalar();
+                participantPlusActif = result != null ? result.ToString() : "";
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+
+                Console.WriteLine("Erreur : " + ex.Message);
+            }
+
+            return participantPlusActif;
+        }
+        /********************************************************************************************************************************************************************/
+        /********************************************************************************************************************************************************************/
 
         public ObservableCollection<Seance> getIdActivite(int _id_activite)
         {
@@ -153,7 +311,7 @@ namespace ProjetFinal
             con.Close();
             return filteredSeances;
         }
-        public ObservableCollection<Activite> ListeActivite2 { get { return listeActivite2; } }
+        
 
         public void getlisteAdherent()
         {

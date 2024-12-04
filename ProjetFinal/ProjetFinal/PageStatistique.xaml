@@ -39,7 +39,7 @@
         <TextBlock x:Name="tbl_NbrTotSeance" Text="Nombre total de séances" FontSize="15" Margin="15" Grid.Row="1" Grid.Column="2"/>
         <TextBlock x:Name="tbl_NbrTotCategorie" Text="Nombre total de catégories" FontSize="15" Margin="15" Grid.Row="2" Grid.Column="0"/>
         <TextBlock x:Name="tbl_MoyNoteApp" Text="Moyenne des notes d'appréciations" FontSize="15" Margin="15" Grid.Row="2" Grid.Column="1"/>
-        <TextBlock x:Name="tbl_AdherentPlusAge" Text="l'adhérent le plus agé" FontSize="15" Margin="15" Grid.Row="2" Grid.Column="3"/>
+        <TextBlock x:Name="tbl_AdherentPlusActif" Text="l'adhérent le plus actif" FontSize="15" Margin="15" Grid.Row="2" Grid.Column="3"/>
 
         <TextBlock x:Name="tbl_sous_titre" Text="Nombre d'adhérents par activité" HorizontalAlignment="Center" FontSize="20" Foreground="DodgerBlue" Margin="20" Grid.Row="3" Grid.ColumnSpan="3"/>
         <GridView x:Name="lv_liste" Grid.Row="4" Grid.ColumnSpan="3">
