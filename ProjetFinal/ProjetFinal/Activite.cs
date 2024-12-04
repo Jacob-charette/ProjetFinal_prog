@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -78,6 +79,14 @@ namespace ProjetFinal
                 {
                     prix_vente = parsedValue2;
                 }
+            }
+        }
+
+        public Visibility peutAfficher
+        {
+            get
+            {
+                return 1 == 10 ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
