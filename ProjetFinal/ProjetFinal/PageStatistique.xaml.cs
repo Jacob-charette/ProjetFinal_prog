@@ -27,6 +27,12 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite2;
+            tbl_NbrTotAdherent.Text = "";
+            tbl_NbrTotActivite.Text = "";
+            tbl_NbrTotSeance.Text = "";
+            tbl_NbrTotCategorie.Text = "";
+            tbl_MoyNoteApp.Text = "";
+            tbl_AdherentPlusAge.Text = "";
         }
     }
 }
