@@ -23,32 +23,30 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+              
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Ajout d'une seance" Margin="15" FontSize="40" 
                FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
                HorizontalAlignment="Center"/>
 
-            <StackPanel Grid.Row="1" Padding="20">
+            <StackPanel Grid.Row="1" Padding="5">
                 <TextBox x:Name="tbxNbrPlaceDispo"  Header="Nombre de place disponible" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblErreurNbrPlaceDispo" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" Padding="20">
-                <TextBox x:Name="tbxNoteAppreciation"  Header="Note d'appreciation"  VerticalAlignment="Top"/>
-                <TextBlock x:Name="tblErreurNoteAppreciation" Foreground="Red" FontSize="15" />
+            <StackPanel Grid.Row="4"  Padding="5">
+                <RatingControl AutomationProperties.Name="Simple RatingControl"  IsClearEnabled="False" IsReadOnly="true" Caption="Note d'appreciation"/>
+
+
             </StackPanel>
-            <StackPanel Grid.Row="2" Padding="20">
-                <TimePicker x:Name="TimePickerOrgansiation" MinuteIncrement="15" Margin="20">Choisir heure de seance</TimePicker>
+            <StackPanel Grid.Row="3" Padding="5">
+                <TimePicker x:Name="TimePickerOrgansiation" MinuteIncrement="15" Margin="5">Choisir heure de seance</TimePicker>
                 <TextBlock x:Name="tblErreurTimePickerOrgansiation" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Padding="20">
-                <DatePicker x:Name="datePickerOrganisation"  Margin="20" >Choisir une date d'organisation</DatePicker>
+            <StackPanel Grid.Row="2"  Padding="5">
+                <DatePicker x:Name="datePickerOrganisation"  Margin="5" >Choisir une date d'organisation</DatePicker>
                 <TextBlock x:Name="tblErreurdatePickerOrganisation" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <Button x:Name="btAjouter" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" Background="LightGray" >
-                <TextBlock Foreground="DarkGreen">Ajouter la senace</TextBlock>
-            </Button>
         </Grid>
     </ScrollViewer>
 </ContentDialog>

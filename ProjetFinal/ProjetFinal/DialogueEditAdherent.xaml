@@ -47,14 +47,7 @@
                 <DatePicker x:Name="datePickerNaissance" SelectedDateChanged="datePickerNaissance_SelectedDateChanged" >Choisir une date de naissance</DatePicker>
                 <TextBlock x:Name="tblErreurdatePickerNaissance" Foreground="Red" FontSize="15" />
             </StackPanel>
-           
-            <StackPanel Grid.Row="6"  Padding="5">
-                <TextBox x:Name="AgeAdherent"   Header="Age de l'dherent" ></TextBox>
-                <TextBlock x:Name="tblErreurAgeAdherent" Foreground="Red" FontSize="15" />
-            </StackPanel>
-
-
-            
+            <Frame x:Name="DialogueEditAdherents"  />
         </Grid>
     </ScrollViewer>
 </ContentDialog>

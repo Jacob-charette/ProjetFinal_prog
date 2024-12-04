@@ -518,14 +518,14 @@ namespace ProjetFinal
             }
             getlisteAcivity();
         }
-        public void UpdateAdherent(int idAdherent, string nomAdh, string prenomAdh,string born,int ageAdh)
+        public void UpdateAdherent(string idAdherent, string nomAdh, string prenomAdh,string born)
         {
             listeAdherent.Clear();
             {
                 try
                 {
                     // Créer la commande pour appeler la procédure stockée
-                    MySqlCommand cmd = new MySqlCommand("Modifier_Activite", con);
+                    MySqlCommand cmd = new MySqlCommand("Modifier_Adherent", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Ajouter le paramètre pour la procédure stockée
@@ -533,7 +533,7 @@ namespace ProjetFinal
                     cmd.Parameters.AddWithValue("@nomAdh", nomAdh);
                     cmd.Parameters.AddWithValue("@prenomAdh", prenomAdh);
                     cmd.Parameters.AddWithValue("@born", born);
-                    cmd.Parameters.AddWithValue("@ageAdh", ageAdh);
+               
 
                     // Ouvrir la connexion et exécuter la commande
                     con.Open();
