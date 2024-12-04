@@ -44,6 +44,7 @@
                 <TextBox x:Name="tbxImageAjout" Header="Image de l'activité"  VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"/>
                 <TextBlock x:Name="tblErreurImage" Foreground="Red" FontSize="15" />
             </StackPanel>
+        <Frame x:Name="DialogueEditActivite"  />
         </Grid>
     </ScrollViewer>
 </ContentDialog>

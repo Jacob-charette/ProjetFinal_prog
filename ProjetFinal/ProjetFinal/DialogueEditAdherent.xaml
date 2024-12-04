@@ -24,42 +24,37 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+            
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="Ajout d'un adherent " Margin="15" FontSize="40" 
                FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
                HorizontalAlignment="Center"/>
 
-            <StackPanel Grid.Row="1" Padding="20">
+            <StackPanel Grid.Row="2" Padding="5">
                 <TextBox x:Name="tbxNomAjoutAdherent"  Header="Nom de l'adherent" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblErreurNomAjoutAdherent" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" Padding="20">
+            <StackPanel Grid.Row="3" Padding="5">
                 <TextBox x:Name="tbxPrenomAjoutAdherent"  Header="Prenom de l'adherent"  VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblErreurPrenomAjoutAdherent" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="2" Padding="20">
+            <StackPanel Grid.Row="4" Padding="5">
                 <TextBox x:Name="tbxAdresseAjoutAdherent"  Header="Adresse de l'adherent" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblErreurAdresseAjoutAdherent" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Padding="20">
-                <DatePicker x:Name="datePickerNaissance"  Margin="20" >Choisir une date de naissance</DatePicker>
+            <StackPanel Grid.Row="5" Padding="5">
+                <DatePicker x:Name="datePickerNaissance" SelectedDateChanged="datePickerNaissance_SelectedDateChanged" >Choisir une date de naissance</DatePicker>
                 <TextBlock x:Name="tblErreurdatePickerNaissance" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="3" Padding="20" >
-                <TextBox x:Name="tbxIDAjoutAdherent"  Header="Identifiant de l'adherent" VerticalAlignment="Top"/>
-                <TextBlock x:Name="tblErreurIDAjoutAdherent" Foreground="Red" FontSize="15" />
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="1" Padding="20">
-                <TextBox x:Name="AgeAdherent"  Margin="20" Header="Age de l'dherent" ></TextBox>
+           
+            <StackPanel Grid.Row="6"  Padding="5">
+                <TextBox x:Name="AgeAdherent"   Header="Age de l'dherent" ></TextBox>
                 <TextBlock x:Name="tblErreurAgeAdherent" Foreground="Red" FontSize="15" />
             </StackPanel>
 
 
-            <Button x:Name="btAjouter" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" Background="LightGray">
-                <TextBlock Foreground="DarkGreen">Ajouter l'adherent</TextBlock>
-            </Button>
+            
         </Grid>
     </ScrollViewer>
 </ContentDialog>

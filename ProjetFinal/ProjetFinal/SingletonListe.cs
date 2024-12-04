@@ -300,7 +300,6 @@ namespace ProjetFinal
                 return false;
 
         }
-
         public void deleteActivity(int idActivity)
         {
             listeActivite.Clear();
@@ -327,6 +326,70 @@ namespace ProjetFinal
                 }
             }
             getlisteAcivity();
+        }
+
+        public void UpdateActivity(int idAct ,int coutAct , int prixAct , int idACTCat , string imageCat ,string nomCat )
+        {
+            listeActivite.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Modifier_Activite", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@idAct", idAct);
+                    cmd.Parameters.AddWithValue("@coutAct", coutAct);
+                    cmd.Parameters.AddWithValue("@prixAct", prixAct);
+                    cmd.Parameters.AddWithValue("@idACTCat", idACTCat);
+                    cmd.Parameters.AddWithValue("@imageCat", imageCat);
+                    cmd.Parameters.AddWithValue("@nomCat", nomCat);
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteAcivity();
+        }
+        public void UpdateAdherent(int idAdherent, string nomAdh, string prenomAdh,string born,int ageAdh)
+        {
+            listeAdherent.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Modifier_Activite", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@idAdherent", idAdherent);
+                    cmd.Parameters.AddWithValue("@nomAdh", nomAdh);
+                    cmd.Parameters.AddWithValue("@prenomAdh", prenomAdh);
+                    cmd.Parameters.AddWithValue("@born", born);
+                    cmd.Parameters.AddWithValue("@ageAdh", ageAdh);
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteAdherent();
         }
         public void deleteSeance(int idSeances)
         {

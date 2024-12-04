@@ -20,6 +20,8 @@ namespace ProjetFinal
 {
     public sealed partial class DialogueEditActivity : ContentDialog
     {
+        int idActivity = 0;
+        int categorie = 0;
         bool valide;
         public DialogueEditActivity(Activite act)
         {
@@ -28,6 +30,8 @@ namespace ProjetFinal
             tbxPrixVente.Text = act.Prix_vente.ToString();
             tbxImageAjout.Text = act.Image;
             tbxNomAjoutActivite.Text = act.Nom;
+            idActivity = act.Id_Activite;
+            categorie = act.Id_categorie;
           
         }
         private void resetErreurs()
@@ -74,6 +78,11 @@ namespace ProjetFinal
                 tbxCoutActiviteErreur.Text = "Veuillez entrer un cout valide";
                 valide = false;
             }
+            if (ValidationInput.isLienValide(tbxImageAjout.Text) == false)
+            {
+                tblErreurImage.Text = "Veuillez entrer un URL valide";
+                valide = false;
+            }
             if (valide==true)
             {
                 int prix = Convert.ToInt32(tbxPrixVente.Text);
@@ -83,20 +92,15 @@ namespace ProjetFinal
                     tbxPrixVenteErreur.Text = "Le cout de vente doit etre inferieur au prix de vente";
                     valide = false;
                 }
-            }
-            
-            
-            if (ValidationInput.isLienValide(tbxImageAjout.Text) == false)
-            {
-                tblErreurImage.Text = "Veuillez entrer un URL valide";
-                valide = false;
-            }
+                if (valide == true)
+                {
+                    SingletonListe.getInstance().UpdateActivity(idActivity, cout, prix, categorie, tbxImageAjout.Text, tbxNomAjoutActivite.Text);
+             
+                    DialogueEditActivite.Navigate(typeof(PageAffichage));
 
-            if (valide == true)
-            {
-               
-
+                }
             }
+ 
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {

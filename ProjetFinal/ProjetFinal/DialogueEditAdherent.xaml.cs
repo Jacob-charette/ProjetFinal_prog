@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -25,11 +26,26 @@ namespace ProjetFinal
         public DialogueEditAdherent(Adherent participant)
         {
             this.InitializeComponent();
-            tbxIDAjoutAdherent.Text=participant.Id_Adherent;
+       
             tbxNomAjoutAdherent.Text = participant.Nom;
             tbxPrenomAjoutAdherent.Text = participant.Prenom;
             tbxAdresseAjoutAdherent.Text = participant.Date_naissance;
             AgeAdherent.Text = participant.Age.ToString();
+            datePickerNaissance.SelectedDate = participant.Date_naissance;
+        }
+        private void resetErreurs()
+        {
+            tbxNomAjoutAdherent.Text = string.Empty;
+            tbxPrenomAjoutAdherent.Text = string.Empty;
+            //datePickerNaissance.Date = string.Empty;
+            //tblErreurNomActivite.Text = string.Empty;
+
+        }
+
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            resetErreurs();
+            
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
@@ -41,11 +57,10 @@ namespace ProjetFinal
             //        args.Cancel = true;
             //}
         }
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
-         
-        }
-      
 
+        private void datePickerNaissance_SelectedDateChanged(DatePicker sender, DatePickerSelectedValueChangedEventArgs args)
+        {
+            
+        }
     }
 }
