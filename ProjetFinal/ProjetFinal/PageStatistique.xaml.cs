@@ -25,7 +25,8 @@ namespace ProjetFinal
     {
         public PageStatistique()
         {
-            
+            this.InitializeComponent();
+            lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite2;
         }
     }
 }
