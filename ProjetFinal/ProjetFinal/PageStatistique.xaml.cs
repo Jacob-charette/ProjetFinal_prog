@@ -27,12 +27,12 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite2;
-            tbl_NbrTotAdherent.Text = "";
-            tbl_NbrTotActivite.Text = "";
-            tbl_NbrTotSeance.Text = "";
-            tbl_NbrTotCategorie.Text = "";
-            tbl_MoyNoteApp.Text = "";
-            tbl_AdherentPlusAge.Text = "";
+            tbl_NbrTotAdherent.Text = "Nombre total d'adhérents : " + SingletonListe.getInstance().getNbrAdherent().ToString();
+            tbl_NbrTotActivite.Text = "Nombre total d'activités : " + SingletonListe.getInstance().getNbrActivite().ToString();
+            tbl_NbrTotSeance.Text = "Nombre total de séances : " + SingletonListe.getInstance().getNbrSeance().ToString();
+            tbl_NbrTotCategorie.Text = "Nombre total de catégories : " + SingletonListe.getInstance().getNbrCategorie().ToString();
+            tbl_MoyNoteApp.Text = "Moyenne des notes d'appréciations : " + SingletonListe.getInstance().getMoyenneNoteApp().ToString();
+            tbl_AdherentPlusActif.Text = "L'adhérent le plus actif : " + SingletonListe.getInstance().getParticipantPlusActif();
         }
     }
 }
