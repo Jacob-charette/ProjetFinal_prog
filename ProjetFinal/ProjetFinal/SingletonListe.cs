@@ -149,9 +149,12 @@ namespace ProjetFinal
 
             }
             r6.Close();
+            r6.Close();
             con.Close();
             return filteredSeances;
         }
+        public ObservableCollection<Activite> ListeActivite2 { get { return listeActivite2; } }
+
         public void getlisteAdherent()
         {
             //Liste pour adherent
@@ -230,6 +233,26 @@ namespace ProjetFinal
 
             }
             r5.Close();
+            con.Close();
+
+            MySqlCommand commande7 = new MySqlCommand();
+            commande7.Connection = con;
+            commande7.CommandText = "SELECT c.nom AS Activite, COUNT(DISTINCT asn.id_Adherent) AS Nombre_Adherents " +
+                                        "from activites a " +
+                                        "JOIN seances s ON a.id_Activite = s.id_Activite " +
+                                        "JOIN adherent_seance asn ON s.id_seance = asn.id_seance " +
+                                        "JOIN categories c ON a.id_categorie = c.id_categorie " +
+                                        "GROUP BY c.nom;";
+            con.Open();
+            MySqlDataReader r7 = commande7.ExecuteReader();
+            while (r7.Read())
+            {
+                string nomActivite = r7["Activite"].ToString();
+                int nombreAdherents = Convert.ToInt32(r7["Nombre_Adherents"]);
+
+                listeActivite2.Add(new Activite(nomActivite, nombreAdherents));
+            }
+            r7.Close();
             con.Close();
         }
 
