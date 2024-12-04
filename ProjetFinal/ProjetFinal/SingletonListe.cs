@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
+using System.Data;
 
 namespace ProjetFinal
 {
@@ -92,6 +94,92 @@ namespace ProjetFinal
             r2.Close();
             con.Close();
 
+            getlisteAcivity();
+            getlisteAdherent();
+            getlisteSeance();
+
+            //Liste pour activite et adhérent
+            MySqlCommand commande7 = new MySqlCommand();
+            commande7.Connection = con;
+            commande7.CommandText =     "SELECT c.nom AS Activite, COUNT(DISTINCT asn.id_Adherent) AS Nombre_Adherents " +
+                                        "from activites a " +
+                                        "JOIN seances s ON a.id_Activite = s.id_Activite " +
+                                        "JOIN adherent_seance asn ON s.id_seance = asn.id_seance " +
+                                        "JOIN categories c ON a.id_categorie = c.id_categorie " +
+                                        "GROUP BY c.nom;";
+            con.Open();
+            MySqlDataReader r7 = commande7.ExecuteReader();
+            while (r7.Read())
+            {
+                string nomActivite = r7["Activite"].ToString();
+                int nombreAdherents = Convert.ToInt32(r7["Nombre_Adherents"]);
+
+                listeActivite2.Add(new Activite(nomActivite, nombreAdherents));
+
+            }
+            r7.Close();
+            con.Close();
+        }
+            public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
+        public ObservableCollection<Adherent> ListeAdherent { get { return listeAdherent; } }
+        public ObservableCollection<Seance> ListeSeance { get { return listeSeance; } }
+
+        public ObservableCollection<Seance> getIdActivite(int _id_activite)
+        {
+            ObservableCollection<Seance> filteredSeances = new ObservableCollection<Seance>();
+
+            //Liste pour Seance
+            MySqlCommand commande6 = new MySqlCommand();
+            commande6.Connection = con;
+            commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
+            con.Open();
+            MySqlDataReader r6 = commande6.ExecuteReader();
+            while (r6.Read())
+            {
+                int id = Convert.ToInt16(r6[0].ToString());
+                string date_organisation = r6[1].ToString();
+                string heure_organisation = r6[2].ToString();
+                int nbr_place_disponible = Convert.ToInt16(r6[3].ToString());
+                int note_appreciation = Convert.ToInt16(r6[4].ToString());
+                int id_Admin = Convert.ToInt16(r6[5].ToString());
+                int id_Activite = Convert.ToInt16(r6[6].ToString());
+                string id_Adherent = r6[7].ToString();
+
+                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
+
+            }
+            r6.Close();
+            con.Close();
+            return filteredSeances;
+        }
+        public void getlisteAdherent()
+        {
+            //Liste pour adherent
+            MySqlCommand commande4 = new MySqlCommand();
+            commande4.Connection = con;
+            commande4.CommandText = "Select * from adherents";
+            con.Open();
+            MySqlDataReader r4 = commande4.ExecuteReader();
+            while (r4.Read())
+
+            {
+                string id_Adherent = r4[0].ToString();
+                string nom = r4[1].ToString();
+                string prenom = r4[2].ToString();
+                string adresse = r4[3].ToString();
+                string date_naissance = r4[4].ToString();
+                int age = Convert.ToInt16(r4[5].ToString());
+                int id_Admin = Convert.ToInt16(r4[6].ToString());
+
+                listeAdherent.Add(new Adherent(id_Adherent, nom, prenom, adresse, date_naissance, age, id_Admin));
+
+            }
+            r4.Close();
+            con.Close();
+        }
+
+        public void getlisteAcivity()
+        {
             //Liste pour activite
             MySqlCommand commande3 = new MySqlCommand();
             commande3.Connection = con;
@@ -117,29 +205,9 @@ namespace ProjetFinal
             r3.Close();
             con.Close();
 
-            //Liste pour adherent
-            MySqlCommand commande4 = new MySqlCommand();
-            commande4.Connection = con;
-            commande4.CommandText = "Select * from adherents";
-            con.Open();
-            MySqlDataReader r4 = commande4.ExecuteReader();
-            while (r4.Read())
-
-            {
-                string id_Adherent = r4[0].ToString();
-                string nom = r4[1].ToString();
-                string prenom = r4[2].ToString();
-                string adresse = r4[3].ToString();
-                string date_naissance = r4[4].ToString();
-                int age = Convert.ToInt16(r4[5].ToString());
-                int id_Admin = Convert.ToInt16(r4[6].ToString());
-
-                listeAdherent.Add(new Adherent(id_Adherent, nom, prenom, adresse, date_naissance, age, id_Admin));
-
-            }
-            r4.Close();
-            con.Close();
-
+        }
+        public void getlisteSeance()
+        {
             //Liste pour seance
             MySqlCommand commande5 = new MySqlCommand();
             commande5.Connection = con;
@@ -149,6 +217,7 @@ namespace ProjetFinal
             while (r5.Read())
 
             {
+                int id= Convert.ToInt16(r5[0].ToString());
                 string date_organisation = r5[1].ToString();
                 string heure_organisation = r5[2].ToString();
                 int nbr_place_disponible = Convert.ToInt16(r5[3].ToString());
@@ -157,61 +226,11 @@ namespace ProjetFinal
                 int id_Activite = Convert.ToInt16(r5[6].ToString());
                 string id_Adherent = r5[7].ToString();
 
-                listeSeance.Add(new Seance(date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
+                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
 
             }
             r5.Close();
             con.Close();
-
-            //Liste pour activite et adhérent
-            MySqlCommand commande7 = new MySqlCommand();
-            commande7.Connection = con;
-            commande7.CommandText =     "SELECT c.nom AS Activite, COUNT(DISTINCT asn.id_Adherent) AS Nombre_Adherents " +
-                                        "from activites a " +
-                                        "JOIN seances s ON a.id_Activite = s.id_Activite " +
-                                        "JOIN adherent_seance asn ON s.id_seance = asn.id_seance " +
-                                        "JOIN categories c ON a.id_categorie = c.id_categorie " +
-                                        "GROUP BY c.nom;";
-            con.Open();
-            MySqlDataReader r7 = commande7.ExecuteReader();
-            while (r7.Read())
-            {
-                string nomActivite = r7["Activite"].ToString();
-                int nombreAdherents = Convert.ToInt32(r7["Nombre_Adherents"]);
-
-                listeActivite2.Add(new Activite(nomActivite, nombreAdherents));
-            }
-            r7.Close();
-            con.Close();
-        }
-            public ObservableCollection<Activite> ListeActivite { get { return listeActivite; } }
-
-        public ObservableCollection<Seance> getIdActivite(int _id_activite)
-        {
-            ObservableCollection<Seance> filteredSeances = new ObservableCollection<Seance>();
-
-            //Liste pour Seance
-            MySqlCommand commande6 = new MySqlCommand();
-            commande6.Connection = con;
-            commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
-            con.Open();
-            MySqlDataReader r6 = commande6.ExecuteReader();
-            while (r6.Read())
-            {
-                string date_organisation = r6[1].ToString();
-                string heure_organisation = r6[2].ToString();
-                int nbr_place_disponible = Convert.ToInt16(r6[3].ToString());
-                int note_appreciation = Convert.ToInt16(r6[4].ToString());
-                int id_Admin = Convert.ToInt16(r6[5].ToString());
-                int id_Activite = Convert.ToInt16(r6[6].ToString());
-                string id_Adherent = r6[7].ToString();
-
-                filteredSeances.Add(new Seance(date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
-
-            }
-            r6.Close();
-            con.Close();
-            return filteredSeances;
         }
 
         public bool connexionAdmin(string nom,string password)
@@ -257,6 +276,89 @@ namespace ProjetFinal
             else
                 return false;
 
+        }
+
+        public void deleteActivity(int idActivity)
+        {
+            listeActivite.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Delet_Activity", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@idActivity", idActivity);
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteAcivity();
+        }
+        public void deleteSeance(int idSeances)
+        {
+            listeSeance.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Delet_Seance", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@idSeances", idSeances);
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteSeance();
+        }
+
+        public void deleteAdherent(string IDparticipant)
+        {
+            listeAdherent.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Delet_AdHERENT", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@IDparticipant", IDparticipant);
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteAdherent();
         }
     }
 

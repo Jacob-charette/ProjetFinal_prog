@@ -42,7 +42,8 @@
                             <TextBlock x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <Button  >
+
+                                <Button x:Name="EditActivity" Click="EditActivity_Click" >
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
                                 <Button x:Name="DeleteActivity" Click="DeleteActivity_Click" >
@@ -77,15 +78,12 @@
                             <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Adresse, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentBirthday" Text="{x:Bind Date_naissance, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentBirthdayAge" Text="{x:Bind Age, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <Button >
-                                    <SymbolIcon Symbol="Edit" Foreground="blue"/>
-                                </Button>
-                                <Button>
-                                    <SymbolIcon Symbol="Delete" Foreground="Red"/>
-                                </Button>
-                                -->
-                            </StackPanel>
+                            <Button x:Name="EditAdherent" Click="EditAdherent_Click" >
+                                <SymbolIcon Symbol="Edit" Foreground="blue"/>
+                            </Button>
+                            <Button x:Name="DelAdherent" Click="DelAdherent_Click">
+                                <SymbolIcon Symbol="Delete" Foreground="Red"/>
+                            </Button>
 
                         </StackPanel>
                     </DataTemplate>
@@ -109,15 +107,16 @@
                                 HorizontalAlignment="Stretch"
                                 >
                             <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            
                             <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Nbr_place_disponible, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Note_appreciation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <Button  >
+                                <Button x:Name="EditSeance" Click="EditSeance_Click" >
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
-                                <Button  >
+                                <Button x:Name="DelSeance" Click="DelSeance_Click" >
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
                             </StackPanel>
@@ -129,7 +128,6 @@
 
         </StackPanel>
         
- 
-        
+    
     </ScrollViewer>
 </Page>

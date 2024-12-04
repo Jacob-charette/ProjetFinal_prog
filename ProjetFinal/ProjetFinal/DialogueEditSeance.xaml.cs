@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Google.Protobuf.WellKnownTypes;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -18,15 +19,24 @@ using Windows.Foundation.Collections;
 
 namespace ProjetFinal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class PageStatistique : Page
+    public sealed partial class DialogueEditSeance : ContentDialog
     {
-        public PageStatistique()
+        bool valide;
+        public DialogueEditSeance(Seance seance)
         {
             this.InitializeComponent();
-            //lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite2;
+            tbxNbrPlaceDispo.Text=seance.Nbr_place_disponible.ToString();
+            tbxNoteAppreciation.Text=seance.Note_appreciation.ToString();
+
+
+        }
+        private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+          
+        }
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
         }
     }
 }

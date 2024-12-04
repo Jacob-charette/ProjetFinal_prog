@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Org.BouncyCastle.Crypto;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,11 +19,23 @@ using Windows.Foundation.Collections;
 
 namespace ProjetFinal
 {
-    public sealed partial class DialogueSuppressionActivite : UserControl
+    public sealed partial class DialogueDeleteActivity : ContentDialog
     {
-        public DialogueSuppressionActivite()
+        int IdActivity = -1;
+        public DialogueDeleteActivity(int idActivite)
         {
             this.InitializeComponent();
+            IdActivity = idActivite;
+            oui.Text=idActivite.ToString();
+        }
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            SingletonListe.getInstance().deleteActivity(IdActivity);
+        }
+
+        private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+       
         }
     }
 }

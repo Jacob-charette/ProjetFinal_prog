@@ -22,5 +22,14 @@ namespace ProjetFinal
             else
                 return false;
         }
+        public static bool isPrixValide(string prix)
+        {
+            int p = 0;
+            if (int.TryParse(prix, out p))             
+                    return true;
+            
+            else
+                return false;
+        }
     }
 }

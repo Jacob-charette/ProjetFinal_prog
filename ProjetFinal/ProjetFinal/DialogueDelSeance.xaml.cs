@@ -18,15 +18,23 @@ using Windows.Foundation.Collections;
 
 namespace ProjetFinal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class PageStatistique : Page
+    public sealed partial class DialogueDelSeance : ContentDialog
     {
-        public PageStatistique()
+        int seance = -1;
+        public DialogueDelSeance(int idseance)
         {
             this.InitializeComponent();
-            //lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite2;
+            seance = idseance;
+            oui.Text = idseance.ToString();
+        }
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            SingletonListe.getInstance().deleteSeance(seance);
+        }
+
+        private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+
         }
     }
 }

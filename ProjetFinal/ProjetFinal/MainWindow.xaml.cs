@@ -49,7 +49,7 @@ namespace ProjetFinal
                     dialog.CloseButtonText = "Annuler";
                     dialog.DefaultButton = ContentDialogButton.Primary;
 
-                    ContentDialogResult resultat = await dialog.ShowAsync(); // Mettre "async" après "private"
+                    ContentDialogResult resultat = await dialog.ShowAsync();
                     break;
                 default:
                     break;

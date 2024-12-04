@@ -1,0 +1,53 @@
+﻿<UserControl
+    x:Class="ProjetFinal.DialogueAjoutActivite"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid Padding="40" x:Name="DialogAddActivityGrid" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Ajout d'une Activite " Margin="15" FontSize="40" 
+               FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
+               HorizontalAlignment="Center"/>
+
+
+            <StackPanel Grid.Row="1" Padding="20">
+                <TextBox x:Name="tbxNomAjoutActivite"  Header="Nom de l'activite" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblErreurNomActivite" Foreground="Red" FontSize="15" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"  Padding="20">
+                <TextBox x:Name="tbxCoutActivite"  Header="Cout d'organisation"  VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbxCoutActiviteErreur" Foreground="Red" FontSize="15" />
+            </StackPanel>
+            <StackPanel Grid.Row="3"  Padding="20">
+                <TextBox x:Name="tbxPrixVente"  Header="Prix vente"  VerticalAlignment="Top"/>
+                <TextBlock x:Name="tbxPrixVenteErreur" Foreground="Red" FontSize="15" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Padding="20">
+                <TextBox x:Name="tbxImageAjout" Header="Image de l'activité"  VerticalAlignment="Top" AcceptsReturn="True" TextWrapping="Wrap"/>
+                <TextBlock x:Name="tblErreurImage" Foreground="Red" FontSize="15" />
+            </StackPanel>
+            <Button x:Name="btAjouter" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" Background="LightGray" >
+                <TextBlock Foreground="DarkGreen">Ajouter l'activite</TextBlock>
+            </Button>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

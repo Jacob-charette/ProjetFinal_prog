@@ -1,0 +1,54 @@
+﻿<ContentDialog
+    x:Class="ProjetFinal.DialogueEditSeance"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjetFinal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+   PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    Closing="ContentDialog_Closing">
+
+    <ScrollViewer>
+        <Grid Padding="40" x:Name="DialogAddAdherentGrid" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Ajout d'une seance" Margin="15" FontSize="40" 
+               FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
+               HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Padding="20">
+                <TextBox x:Name="tbxNbrPlaceDispo"  Header="Nombre de place disponible" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblErreurNbrPlaceDispo" Foreground="Red" FontSize="15" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" Padding="20">
+                <TextBox x:Name="tbxNoteAppreciation"  Header="Note d'appreciation"  VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblErreurNoteAppreciation" Foreground="Red" FontSize="15" />
+            </StackPanel>
+            <StackPanel Grid.Row="2" Padding="20">
+                <TimePicker x:Name="TimePickerOrgansiation" MinuteIncrement="15" Margin="20">Choisir heure de seance</TimePicker>
+                <TextBlock x:Name="tblErreurTimePickerOrgansiation" Foreground="Red" FontSize="15" />
+            </StackPanel>
+            <StackPanel Grid.Row="2" Grid.Column="1" Padding="20">
+                <DatePicker x:Name="datePickerOrganisation"  Margin="20" >Choisir une date d'organisation</DatePicker>
+                <TextBlock x:Name="tblErreurdatePickerOrganisation" Foreground="Red" FontSize="15" />
+            </StackPanel>
+            <Button x:Name="btAjouter" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" Background="LightGray" >
+                <TextBlock Foreground="DarkGreen">Ajouter la senace</TextBlock>
+            </Button>
+        </Grid>
+    </ScrollViewer>
+</ContentDialog>
