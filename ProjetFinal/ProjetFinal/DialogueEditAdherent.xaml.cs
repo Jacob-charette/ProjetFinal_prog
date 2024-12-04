@@ -30,9 +30,7 @@ namespace ProjetFinal
             tbxNomAjoutAdherent.Text = participant.Nom;
             tbxPrenomAjoutAdherent.Text = participant.Prenom;
             tbxAdresseAjoutAdherent.Text = participant.Date_naissance;
-            AgeAdherent.Text = participant.Age.ToString();
-            datePickerNaissance.SelectedDate = participant.Date_naissance;
-        }
+            AgeAdherent.Text = participant.Age.ToString();        }
         private void resetErreurs()
         {
             tbxNomAjoutAdherent.Text = string.Empty;

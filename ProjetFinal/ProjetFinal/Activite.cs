@@ -86,7 +86,7 @@ namespace ProjetFinal
         {
             get
             {
-                return 1 == 1 ? Visibility.Visible : Visibility.Collapsed;
+                return SessionManager.Instance.AdminCon == true ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 

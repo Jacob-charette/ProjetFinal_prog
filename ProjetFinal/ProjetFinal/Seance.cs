@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,13 @@ namespace ProjetFinal
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
         public int Id_Activite { get => id_Activite; set => id_Activite = value; }
         public string Id_Adherent { get => id_Adherent; set => id_Adherent = value; }
+        public Visibility peutAfficher
+        {
+            get
+            {
+                return SessionManager.Instance.AdminCon == true ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
 
 
 

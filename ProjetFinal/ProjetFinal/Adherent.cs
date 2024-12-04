@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,14 @@ namespace ProjetFinal
         public string Date_naissance { get => date_naissance; set => date_naissance = value; }
         public int Age { get => age; set => age = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
+
+        public Visibility peutAfficher
+        {
+            get
+            {
+                return SessionManager.Instance.AdminCon == true ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
 
 
 
