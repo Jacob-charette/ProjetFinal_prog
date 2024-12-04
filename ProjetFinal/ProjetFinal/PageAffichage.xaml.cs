@@ -29,7 +29,10 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite;
-            
+            lv_listeAdherent.ItemsSource=SingletonListe.getInstance().ListeAdherent;
+            lvListeSeances.ItemsSource=SingletonListe.getInstance().ListeSeance;
+
+
         }
         //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,6 +50,139 @@ namespace ProjetFinal
               
                 ContentDialogResult resultat = await dialog.ShowAsync();
             }
+        }
+
+        private async void DeleteActivity_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Activite produit = (Activite)button.DataContext;
+            int idAct = produit.Id_Activite;
+            int index = produit.Id_Activite;
+
+          
+           
+            var selectedItem = lv_liste.SelectedItem as Activite;
+            if (index !=-1)
+            {
+                DialogueDeleteActivity dialog = new DialogueDeleteActivity(index);
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Confirmation de suppression";
+                dialog.PrimaryButtonText = "Oui";
+                dialog.CloseButtonText = "Non";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
+        }
+
+        private async void DelAdherent_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Adherent produit = (Adherent)button.DataContext;
+            string idAct = produit.Id_Adherent;
+            string index = produit.Id_Adherent;
+
+
+
+            var selectedItem = lv_liste.SelectedItem as Activite;
+            if (index != "")
+            {
+                DialogDelAdherent dialog = new DialogDelAdherent(index);
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Confirmation de suppression";
+                dialog.PrimaryButtonText = "Oui";
+                dialog.CloseButtonText = "Non";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
+
+        }
+
+        private async void DelSeance_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Seance produit = (Seance)button.DataContext;
+            int idAct = produit.Id_seance;
+            int index = produit.Id_seance;
+
+
+
+            var selectedItem = lv_liste.SelectedItem as Activite;
+            if (index != -1)
+            {
+                DialogueDelSeance dialog = new DialogueDelSeance(index);
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Confirmation de suppression";
+                dialog.PrimaryButtonText = "Oui";
+                dialog.CloseButtonText = "Non";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
+        }
+
+        private async void EditActivity_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Activite produit = (Activite)button.DataContext;
+            int idAct = produit.Id_Activite;
+            int index = produit.Id_Activite;
+
+
+
+            var selectedItem = lv_liste.SelectedItem as Activite;
+            if (index != -1)
+            {
+                DialogueEditActivity dialog = new DialogueEditActivity(produit);
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Modifiaction de l'activité";
+                dialog.PrimaryButtonText = "Modifier";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
+        }
+
+        private async void EditSeance_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Seance produit = (Seance)button.DataContext;
+            int idAct = produit.Id_Activite;
+            int index = produit.Id_Activite;
+
+
+
+            var selectedItem = lv_liste.SelectedItem as Activite;
+            if (index != -1)
+            {
+                DialogueEditSeance dialog = new DialogueEditSeance(produit);
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Modifiaction de l'activité";
+                dialog.PrimaryButtonText = "Modifier";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
+
+        }
+
+        private async void  EditAdherent_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            Adherent produit = (Adherent)button.DataContext;
+ 
+                DialogueEditAdherent dialog = new DialogueEditAdherent(produit);
+                dialog.XamlRoot = lv_liste.XamlRoot;
+                dialog.Title = "Modifiaction de l'activité";
+                dialog.PrimaryButtonText = "Modifier";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            
+
         }
     }
 }

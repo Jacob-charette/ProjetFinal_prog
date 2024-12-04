@@ -15,6 +15,16 @@
     <None Remove="DetailActivite.xaml" />
     <None Remove="DialogAdherent.xaml" />
     <None Remove="DialogChoixSeance.xaml" />
+    <None Remove="DialogDelAdherent.xaml" />
+    <None Remove="DialogueAjoutActivite.xaml" />
+    <None Remove="DialogueAjoutAdherent.xaml" />
+    <None Remove="DialogueAjoutSeance.xaml" />
+    <None Remove="DialogueDeleteActivity.xaml" />
+    <None Remove="DialogueDelSeance.xaml" />
+    <None Remove="DialogueEditActivity.xaml" />
+    <None Remove="DialogueEditAdherent.xaml" />
+    <None Remove="DialogueEditSeance.xaml" />
+    <None Remove="PageAccueil.xaml" />
     <None Remove="PageAffichage.xaml" />
     <None Remove="PageAjout.xaml" />
     <None Remove="PageStatistique.xaml" />
@@ -44,6 +54,56 @@
   -->
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
     <ProjectCapability Include="Msix" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueAjoutActivite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueAjoutAdherent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueAjoutSeance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueEditSeance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueEditAdherent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueEditActivity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueDelSeance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogDelAdherent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="DialogueDeleteActivity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="PageAccueil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="DialogChoixSeance.xaml">

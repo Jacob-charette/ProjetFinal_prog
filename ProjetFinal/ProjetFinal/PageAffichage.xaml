@@ -26,7 +26,7 @@
                    FontWeight="Light"
                    />
 
-            <GridView x:Name="lv_liste" SelectionChanged="lv_liste_SelectionChanged" >
+            <GridView x:Name="lv_liste" >
                 <!-- Template-->
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local:Activite">
@@ -34,6 +34,7 @@
                                 Margin="15" 
                                 HorizontalAlignment="Stretch"
                                 >
+                            <TextBlock x:Name="IdAct" Visibility="Collapsed" Text="{x:Bind Id_Activite, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
                             <Image x:Name="img" Source="{x:Bind Image}" Height="150" Margin="10"/>
                             <TextBlock Text="{x:Bind Nom, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbx" Text="{x:Bind Prix_vente_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
@@ -41,21 +42,92 @@
                             <TextBlock x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <!--
-                                <Button>
+
+                                <Button x:Name="EditActivity" Click="EditActivity_Click" >
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
-                                <Button>
+                                <Button x:Name="DeleteActivity" Click="DeleteActivity_Click" >
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
-                                -->
                             </StackPanel>
 
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
+
+            <TextBlock  
+                   Text="Liste des adherents" 
+                   Margin="20" 
+                   HorizontalAlignment="Center" 
+                   FontSize="40"
+                   FontWeight="Light"
+                   />
+
+            <GridView x:Name="lv_listeAdherent"  >
+                <!-- Template-->
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Adherent">
+                        <StackPanel Orientation="Vertical" Width="200" Background="AliceBlue"
+                                Margin="15" 
+                                HorizontalAlignment="Stretch"
+                                >
+                            <TextBlock Text="{x:Bind Id_Adherent, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Nom, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Prenom, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Adresse, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentBirthday" Text="{x:Bind Date_naissance, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentBirthdayAge" Text="{x:Bind Age, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <Button x:Name="EditAdherent" Click="EditAdherent_Click" >
+                                <SymbolIcon Symbol="Edit" Foreground="blue"/>
+                            </Button>
+                            <Button x:Name="DelAdherent" Click="DelAdherent_Click">
+                                <SymbolIcon Symbol="Delete" Foreground="Red"/>
+                            </Button>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
+            <TextBlock  
+                   Text="Liste des seances" 
+                   Margin="20" 
+                   HorizontalAlignment="Center" 
+                   FontSize="40"
+                   FontWeight="Light"
+                   />
             
+            <GridView x:Name="lvListeSeances"  >
+                <!-- Template-->
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Seance">
+                        <StackPanel Orientation="Vertical" Width="200" Background="AliceBlue"
+                                Margin="15" 
+                                HorizontalAlignment="Stretch"
+                                >
+                            <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            
+                            <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Nbr_place_disponible, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Note_appreciation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            
+                            <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
+                                <Button x:Name="EditSeance" Click="EditSeance_Click" >
+                                    <SymbolIcon Symbol="Edit" Foreground="blue"/>
+                                </Button>
+                                <Button x:Name="DelSeance" Click="DelSeance_Click" >
+                                    <SymbolIcon Symbol="Delete" Foreground="Red"/>
+                                </Button>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+
         </StackPanel>
+        
+    
     </ScrollViewer>
 </Page>

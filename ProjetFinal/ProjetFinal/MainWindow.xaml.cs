@@ -26,7 +26,7 @@ namespace ProjetFinal
         public MainWindow()
         {
             this.InitializeComponent();
-            mainFrame.Navigate(typeof(PageAffichage));
+            mainFrame.Navigate(typeof(PageAccueil));
         }
 
         private async void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -49,7 +49,7 @@ namespace ProjetFinal
                     dialog.CloseButtonText = "Annuler";
                     dialog.DefaultButton = ContentDialogButton.Primary;
 
-                    ContentDialogResult resultat = await dialog.ShowAsync(); // Mettre "async" après "private"
+                    ContentDialogResult resultat = await dialog.ShowAsync();
                     break;
                 default:
                     break;

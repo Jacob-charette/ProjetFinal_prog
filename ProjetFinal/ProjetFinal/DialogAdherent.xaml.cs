@@ -34,7 +34,10 @@ namespace ProjetFinal
         }
         private void resetErreurs()
         {
-            tblAdherenErreur.Text = string.Empty; 
+            tblAdherenErreur.Text = string.Empty;
+            tblAdminNomError.Text = string.Empty;
+            tblAdminPasswordError.Text = string.Empty;
+            chkError.Text = string.Empty;
            
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -42,23 +45,56 @@ namespace ProjetFinal
             resetErreurs();
             valide = true;
 
-            if (ValidationInput.isNomValide(tbxAdherent.Text) == false)
+           
+
+            if (ValidationInput.isNomValide(tbxAdherent.Text) == false && Adherent.IsChecked==true)
             {
                 tblAdherenErreur.Text = "Veuillez entrer un identifiant";
                 valide = false;
             }
+            if (ValidationInput.isNomValide(tbxAdminPassword.Password) == false && Administrateur.IsChecked == true)
+            {
+                tblAdminPasswordError.Text = "Veuillez entrer un mot de passe";
+                valide = false;
+            }
+            if (ValidationInput.isNomValide(tbxAdminNom.Text) == false && Administrateur.IsChecked == true)
+            {
+                tblAdminNomError.Text = "Veuillez entrer un nom d'administrateur";
+                valide = false;
+            }
+
+            if(Adherent.IsChecked != true && Administrateur.IsChecked != true) 
+            {
+                chkError.Text = "Veuillez selectionner un role d'usager";
+                valide = false;
+            }
+
             if (valide == true)
             {
-
-                //if (ActiviteNom != null)
-                //{
-                //Frame parentFrame = Window.Current.Content as Frame;
-                //    parentFrame.Navigate(typeof(DetailActivite), ActiviteNom);
-                //}
-                //else
-                //{
-                //    Debug.WriteLine("ActiviteNom est null.");
-                //}
+                if (Administrateur.IsChecked == true)
+                {
+                    if (SingletonListe.getInstance().connexionAdmin(tbxAdminNom.Text,tbxAdminPassword.Password)==true)
+                    {
+                        DialogueConnexion.Navigate(typeof(PageAffichage));
+                    }
+                    else
+                    {
+                        valide = false;
+                        tblAdminPasswordError.Text = "Erreur d'authentification";
+                    }
+                }
+                if (Adherent.IsChecked == true)
+                {
+                    if (SingletonListe.getInstance().connexionAdherent(tbxAdherent.Text) == true)
+                    {
+                        DialogueConnexion.Navigate(typeof(PageAffichage));
+                    }
+                    else
+                    {
+                        valide = false;
+                        tblAdherenErreur.Text = "Erreur d'authentification";
+                    }
+                }
 
 
             }
@@ -74,5 +110,47 @@ namespace ProjetFinal
             }
         }
 
+        private void Administrateur_Checked(object sender, RoutedEventArgs e)
+        {
+            resetErreurs();
+            if (Administrateur.IsChecked==true)
+            {
+                Adherent.IsChecked = false;
+                tbxAdminNom.Visibility = Visibility.Visible;
+                tbxAdminPassword.Visibility = Visibility.Visible;
+            }
+           
+
+        }
+
+        private void Adherent_Checked(object sender, RoutedEventArgs e)
+        {
+            resetErreurs();
+            if (Adherent.IsChecked == true)
+            {
+                Administrateur.IsChecked = false;
+                tbxAdherent.Visibility = Visibility.Visible;            
+            }
+           
+        }
+
+        private void Administrateur_Unchecked(object sender, RoutedEventArgs e)
+        {
+            resetErreurs();
+            if (Administrateur.IsChecked == false)
+            {
+                tbxAdminNom.Visibility = Visibility.Collapsed;
+                tbxAdminPassword.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Adherent_Unchecked(object sender, RoutedEventArgs e)
+        {
+            resetErreurs();
+            if (Adherent.IsChecked == false)
+            {
+                tbxAdherent.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetFinal
 {
-    internal class Adherent
+    public class Adherent
     {
         string id_Adherent;
         string nom;
