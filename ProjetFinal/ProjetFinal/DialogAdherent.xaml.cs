@@ -75,10 +75,14 @@ namespace ProjetFinal
                 {
                     if (SingletonListe.getInstance().connexionAdmin(tbxAdminNom.Text,tbxAdminPassword.Password)==true)
                     {
+                        // Si la connexion en tant qu'admin est accepté
+                        SessionManager.Instance.AdminCon = true;
                         DialogueConnexion.Navigate(typeof(PageAffichage));
                     }
                     else
                     {
+                        // Si la connexion en tant qu'admin est refusé
+                        SessionManager.Instance.AdminCon = false;
                         valide = false;
                         tblAdminPasswordError.Text = "Erreur d'authentification";
                     }
@@ -87,10 +91,14 @@ namespace ProjetFinal
                 {
                     if (SingletonListe.getInstance().connexionAdherent(tbxAdherent.Text) == true)
                     {
+                        // Si la connexion en tant qu'adhérent est accepté
+                        SessionManager.Instance.AdherentCon = true;
                         DialogueConnexion.Navigate(typeof(PageAffichage));
                     }
                     else
                     {
+                        // Si la connexion en tant qu'adhérent est refusé
+                        SessionManager.Instance.AdherentCon = false;
                         valide = false;
                         tblAdherenErreur.Text = "Erreur d'authentification";
                     }

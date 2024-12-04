@@ -44,7 +44,7 @@ namespace ProjetFinal
                 case "iConnection":
                     DialogAdherent dialog = new DialogAdherent();
                     dialog.XamlRoot = nvih_text.XamlRoot;
-                    dialog.Title = "Boite de dialog";
+                    dialog.Title = "Authentification";
                     dialog.PrimaryButtonText = "Se connecter";
                     dialog.CloseButtonText = "Annuler";
                     dialog.DefaultButton = ContentDialogButton.Primary;

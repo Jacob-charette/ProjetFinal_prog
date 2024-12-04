@@ -46,7 +46,7 @@
                                 <Button x:Name="EditActivity" Click="EditActivity_Click" Visibility="{x:Bind peutAfficher}">
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
-                                <Button x:Name="DeleteActivity" Click="DeleteActivity_Click" >
+                                <Button x:Name="DeleteActivity" Click="DeleteActivity_Click" Visibility="{x:Bind peutAfficher}">
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
                             </StackPanel>
@@ -78,10 +78,10 @@
                             <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Adresse, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentBirthday" Text="{x:Bind Date_naissance, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentBirthdayAge" Text="{x:Bind Age, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <Button x:Name="EditAdherent" Click="EditAdherent_Click" >
+                            <Button x:Name="EditAdherent" Click="EditAdherent_Click" Visibility="{x:Bind peutAfficher}">
                                 <SymbolIcon Symbol="Edit" Foreground="blue"/>
                             </Button>
-                            <Button x:Name="DelAdherent" Click="DelAdherent_Click">
+                            <Button x:Name="DelAdherent" Click="DelAdherent_Click" Visibility="{x:Bind peutAfficher}">
                                 <SymbolIcon Symbol="Delete" Foreground="Red"/>
                             </Button>
 
@@ -113,10 +113,10 @@
                             <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Note_appreciation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
-                                <Button x:Name="EditSeance" Click="EditSeance_Click" >
+                                <Button x:Name="EditSeance" Click="EditSeance_Click" Visibility="{x:Bind peutAfficher}">
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
-                                <Button x:Name="DelSeance" Click="DelSeance_Click" >
+                                <Button x:Name="DelSeance" Click="DelSeance_Click" Visibility="{x:Bind peutAfficher}">
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
                             </StackPanel>
