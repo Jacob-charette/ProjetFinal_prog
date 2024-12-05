@@ -27,6 +27,16 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lvListeSeances.ItemsSource = SingletonListe.getInstance().ListeSeance;
+
+            // Si l'utilisateur est admin, on affiche le bouton d'ajout
+            if (SessionManager.Instance.AdminCon == true)
+            {
+                cmb_ajouter.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                cmb_ajouter.Visibility = Visibility.Collapsed;
+            }
         }
 
         private async void AppBarButton_Click(object sender, RoutedEventArgs e)

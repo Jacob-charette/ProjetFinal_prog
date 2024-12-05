@@ -30,7 +30,7 @@ namespace ProjetFinal
             mainFrame.Navigate(typeof(PageAffichage));
         }
 
-        private async void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
 

@@ -18,8 +18,8 @@
                    FontSize="40"
                    FontWeight="Light"
                    />
-            <CommandBar  Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
-                <AppBarButton Icon="Add" Label="Ajouter une seance" Click="AppBarButton_Click" ToolTipService.ToolTip="Boite de dialogue"/>
+            <CommandBar x:Name="cmb_ajouter" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Add" Label="Ajouter une seance" Background="blue" Foreground="white" Click="AppBarButton_Click" ToolTipService.ToolTip="Boite de dialogue"/>
             </CommandBar>
             <GridView x:Name="lvListeSeances"  >
                 <!-- Template-->

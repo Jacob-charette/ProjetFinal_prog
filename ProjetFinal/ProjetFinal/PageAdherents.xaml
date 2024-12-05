@@ -24,8 +24,8 @@
                    FontWeight="Light"
                    />
 
-            <CommandBar  Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
-                <AppBarButton Icon="Add" Label="Ajouter un adherent" Click="AppBarButton_Click_1"  ToolTipService.ToolTip="Boite de dialogue"/>
+            <CommandBar x:Name="cmb_ajouter" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Add" Label="Ajouter un adherent" Background="Blue" Foreground="white" Click="AppBarButton_Click_1"  ToolTipService.ToolTip="Boite de dialogue"/>
             </CommandBar>
             <GridView x:Name="lv_listeAdherent"  >
                 <!-- Template-->

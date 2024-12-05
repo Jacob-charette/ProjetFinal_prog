@@ -18,8 +18,14 @@
                    FontSize="40"
                    FontWeight="Light"
                    />
-            <CommandBar  Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
-                <AppBarButton Icon="Add" Label="Ajouter une activité" Click="AppBarButton_Click"  ToolTipService.ToolTip="Boite de dialogue"/>
+            <CommandBar x:Name="cmb_ajouter" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Add" 
+                              Label="Ajouter une activité" 
+                              Background="blue" 
+                              Foreground="white" 
+                              Click="AppBarButton_Click"  
+                              ToolTipService.ToolTip="Boite de dialogue" 
+                              />
             </CommandBar>
             <TextBlock x:Name="tbl_sous_titre" 
                    Text="CLiquer sur l'une des activités pour choisir une séance" 

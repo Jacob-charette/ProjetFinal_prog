@@ -27,6 +27,16 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lv_listeAdherent.ItemsSource = SingletonListe.getInstance().ListeAdherent;
+
+            // Si l'utilisateur est admin, on affiche le bouton d'ajout
+            if (SessionManager.Instance.AdminCon == true)
+            {
+                cmb_ajouter.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                cmb_ajouter.Visibility = Visibility.Collapsed;
+            }
         }
 
         private async void DelAdherent_Click(object sender, RoutedEventArgs e)
