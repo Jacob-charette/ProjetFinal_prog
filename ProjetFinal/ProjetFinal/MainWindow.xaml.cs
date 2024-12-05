@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
@@ -41,7 +42,7 @@ namespace ProjetFinal
                 case "iStatistique":
                     mainFrame.Navigate(typeof(PageStatistique));
                     break;
-                case "iConnection":
+                case "iConnexion":
                     DialogAdherent dialog = new DialogAdherent();
                     dialog.XamlRoot = nvih_text.XamlRoot;
                     dialog.Title = "Authentification";
@@ -50,6 +51,11 @@ namespace ProjetFinal
                     dialog.DefaultButton = ContentDialogButton.Primary;
 
                     ContentDialogResult resultat = await dialog.ShowAsync();
+                    break;
+                case "iDeconnexion":
+                    SessionManager.Instance.AdherentCon = false;
+                    SessionManager.Instance.AdminCon = false;
+                    mainFrame.Navigate(typeof(PageAffichage));
                     break;
                 default:
                     break;

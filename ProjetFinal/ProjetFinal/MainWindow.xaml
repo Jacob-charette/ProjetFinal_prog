@@ -12,12 +12,14 @@
                         SelectionChanged="navView_SelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader x:Name="nvih_text" Content="Ahérent"/>
-                <NavigationViewItem Content="Activités" x:Name="iActivite" Icon="Contact"/>
-                <NavigationViewItem Content="Statistiques" x:Name="iStatistique" Icon="Calculator"/>
+                <NavigationViewItem Content="Page des Activités" x:Name="iActivite" Icon="Contact"/>
+                <NavigationViewItem Content="Page des Statistiques" x:Name="iStatistique" Icon="Calculator"/>
+                <NavigationViewItem Content="Page des Adérents" x:Name="iAdherent" Icon="People"/>
+                <NavigationViewItem Content="Page des Séances" x:Name="iSeance" Icon="ViewAll"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItemSeparator />
                 <NavigationViewItem Content="CSV" x:Name="iCSV" Icon="Download"/>
-                <NavigationViewItem Content="Connection" x:Name="iConnection" Icon="GoToStart"/>
+                <NavigationViewItem Content="Connexion" x:Name="iConnexion" Icon="GoToStart"/>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>

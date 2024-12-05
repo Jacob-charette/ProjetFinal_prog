@@ -341,6 +341,7 @@ namespace ProjetFinal
 
         public void getlisteAcivity()
         {
+            listeActivite.Clear();
             //Liste pour activite
             MySqlCommand commande3 = new MySqlCommand();
             commande3.Connection = con;
