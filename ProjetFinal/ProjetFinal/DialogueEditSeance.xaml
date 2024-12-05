@@ -35,7 +35,7 @@
                 <TextBlock x:Name="tblErreurNbrPlaceDispo" Foreground="Red" FontSize="15" />
             </StackPanel>
             <StackPanel Grid.Row="4"  Padding="5">
-                <RatingControl AutomationProperties.Name="Simple RatingControl"  IsClearEnabled="False" IsReadOnly="true" Caption="Note d'appreciation"/>
+                <RatingControl x:Name="Rating" AutomationProperties.Name="Simple RatingControl"  IsClearEnabled="False" IsReadOnly="true" Caption="Note d'appreciation"/>
 
 
             </StackPanel>

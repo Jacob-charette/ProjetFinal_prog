@@ -13,6 +13,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization.DateTimeFormatting;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -25,14 +26,29 @@ namespace ProjetFinal
         public DialogueEditSeance(Seance seance)
         {
             this.InitializeComponent();
-            tbxNbrPlaceDispo.Text=seance.Nbr_place_disponible.ToString();
-            tbxNoteAppreciation.Text=seance.Note_appreciation.ToString();
-
+            tbxNbrPlaceDispo.Text = seance.Nbr_place_disponible.ToString();
+            Rating.Value = seance.Note_appreciation;
+            TimePickerOrgansiation.SelectedTime = TimeSpan.Parse(seance.Heure_organisation);
+            datePickerOrganisation.SelectedDate=DateTime.Parse(seance.Date_organisation);
 
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
-          
+            if (ValidationInput.isNomValide(tbxNbrPlaceDispo.Text) == false)
+            {
+                tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre de place disponible ";
+                valide = false;
+            } 
+            if (ValidationInput.isPrixValide(tbxNbrPlaceDispo.Text) == false)
+            {
+                tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre valide ";
+                valide = false;
+            }
+            if (valide==true)
+            {
+
+            }
+
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
