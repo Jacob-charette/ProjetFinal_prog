@@ -43,14 +43,7 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(PageStatistique));
                     break;
                 case "iConnexion":
-                    DialogAdherent dialog = new DialogAdherent();
-                    dialog.XamlRoot = nvih_text.XamlRoot;
-                    dialog.Title = "Authentification";
-                    dialog.PrimaryButtonText = "Se connecter";
-                    dialog.CloseButtonText = "Annuler";
-                    dialog.DefaultButton = ContentDialogButton.Primary;
 
-                    ContentDialogResult resultat = await dialog.ShowAsync();
                     break;
                 case "iDeconnexion":
                     SessionManager.Instance.AdherentCon = false;
@@ -61,6 +54,23 @@ namespace ProjetFinal
                     break;
             }
             
+        }
+
+        private async void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            var item = args.InvokedItem;
+
+            if(item.ToString() == "Connexion")
+            {
+                DialogAdherent dialog = new DialogAdherent();
+                dialog.XamlRoot = nvih_text.XamlRoot;
+                dialog.Title = "Authentification";
+                dialog.PrimaryButtonText = "Se connecter";
+                dialog.CloseButtonText = "Annuler";
+                dialog.DefaultButton = ContentDialogButton.Primary;
+
+                ContentDialogResult resultat = await dialog.ShowAsync();
+            }
         }
     }
 }

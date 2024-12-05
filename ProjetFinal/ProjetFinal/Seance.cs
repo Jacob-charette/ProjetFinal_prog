@@ -9,7 +9,7 @@ namespace ProjetFinal
 {
     public class Seance
     {
-        string date_organisation, heure_organisation, id_Adherent;
+        string date_organisation, heure_organisation;
         int idseance,nbr_place_disponible, note_appreciation, id_Admin, id_Activite;
 
 
@@ -22,7 +22,7 @@ namespace ProjetFinal
             this.note_appreciation = 0;
             this.id_Admin = 0;
             this.id_Activite = 0;
-          
+            this.id_Adherent = "";
 
         }
         public Seance(int idseance,string date_organisation, string heure_organisation, int nbr_place_disponible, int note_appreciation, int id_Admin, int id_Activite)
@@ -34,7 +34,7 @@ namespace ProjetFinal
             this.note_appreciation = note_appreciation;
             this.id_Admin = id_Admin;
             this.id_Activite = id_Activite;
-       
+            this.id_Adherent = id_Adherent;
         }
 
         public int Id_seance{ get => idseance; set => idseance = value; }
@@ -44,7 +44,7 @@ namespace ProjetFinal
         public int Note_appreciation { get => note_appreciation; set => note_appreciation = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
         public int Id_Activite { get => id_Activite; set => id_Activite = value; }
-
+        public string Id_Adherent { get => id_Adherent; set => id_Adherent = value; }
         public Visibility peutAfficher
         {
             get

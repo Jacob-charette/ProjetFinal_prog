@@ -9,7 +9,7 @@
 
     <Grid>
         <NavigationView PaneTitle="Navigation" x:Name="navView"
-                        SelectionChanged="navView_SelectionChanged">
+                        SelectionChanged="navView_SelectionChanged" ItemInvoked="navView_ItemInvoked">
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader x:Name="nvih_text" Content="Ahérent"/>
                 <NavigationViewItem Content="Page des Activités" x:Name="iActivite" Icon="Contact"/>
