@@ -59,7 +59,7 @@ namespace ProjetFinal
 
                 DialogueEditSeances.Navigate(typeof(PageAffichage));
             }
-            //StateTrigger dateBorn = datePickerNaissance.ToString();
+           
            
         }
     }

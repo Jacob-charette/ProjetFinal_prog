@@ -63,14 +63,11 @@ namespace ProjetFinal
                 tblErreurAdresseAjoutAdherent.Text = "Veuillez entrer une adresse de l'adherent";
                 valide = false;
             }
-        
-         
-
             if (valide == true)
             {
                 {
                     //StateTrigger dateBorn = datePickerNaissance.ToString();
-                    SingletonListe.getInstance().UpdateAdherent(id, tbxNomAjoutAdherent.Text, tbxPrenomAjoutAdherent.Text, datePickerNaissance.Date.ToString("yyyy/MM/d"));
+                    SingletonListe.getInstance().UpdateAdherent(id, tbxNomAjoutAdherent.Text, tbxPrenomAjoutAdherent.Text,tbxAdresseAjoutAdherent.Text, datePickerNaissance.Date.ToString("yyyy/MM/d"));
 
                     DialogueEditAdherents.Navigate(typeof(PageAffichage));
 

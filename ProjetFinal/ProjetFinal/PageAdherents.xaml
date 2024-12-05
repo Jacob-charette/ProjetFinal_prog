@@ -7,8 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
+    <ScrollViewer>
         <StackPanel Orientation="Vertical">
             <TextBlock x:Name="tbl_titre" 
                    Text="Liste des adhérents" 
@@ -25,6 +24,9 @@
                    FontWeight="Light"
                    />
 
+            <CommandBar  Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Add" Label="Ajouter un adherent" Click="AppBarButton_Click_1"  ToolTipService.ToolTip="Boite de dialogue"/>
+            </CommandBar>
             <GridView x:Name="lv_listeAdherent"  >
                 <!-- Template-->
                 <GridView.ItemTemplate>
@@ -51,5 +53,6 @@
                 </GridView.ItemTemplate>
             </GridView>
         </StackPanel>
-    </Grid>
+
+    </ScrollViewer>
 </Page>

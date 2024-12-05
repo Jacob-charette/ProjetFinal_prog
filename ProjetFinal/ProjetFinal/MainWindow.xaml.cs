@@ -42,6 +42,9 @@ namespace ProjetFinal
                 case "iStatistique":
                     mainFrame.Navigate(typeof(PageStatistique));
                     break;
+                case "iSeance":
+                    mainFrame.Navigate(typeof(PageSeance));
+                    break;
                 case "iConnexion":
 
                     break;

@@ -68,5 +68,15 @@ namespace ProjetFinal
 
 
         }
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            DialogueAjoutAdherent dialog = new DialogueAjoutAdherent();
+            dialog.XamlRoot = lv_listeAdherent.XamlRoot;
+            dialog.Title = "Ajout de l'adherent";
+            dialog.PrimaryButtonText = "Ajouter";
+            dialog.CloseButtonText = "Annuler";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            ContentDialogResult resultat = await dialog.ShowAsync();
+        }
     }
 }

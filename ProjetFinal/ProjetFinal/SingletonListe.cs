@@ -30,6 +30,7 @@ namespace ProjetFinal
         ObservableCollection<Adherent> listeAdherent;
         ObservableCollection<Activite> listeActivite;
         ObservableCollection<Activite> listeActivite2;
+        ObservableCollection<ActiviteCombo> listeActivite3;
         ObservableCollection<Categorie> listeCategorie;
         ObservableCollection<Seance> listeSeance;
         ObservableCollection<Seance> listeActiviteId;
@@ -44,6 +45,7 @@ namespace ProjetFinal
             listeAdherent = new ObservableCollection<Adherent>();
             listeActivite = new ObservableCollection<Activite>();
             listeActivite2 = new ObservableCollection<Activite>();
+            listeActivite3 = new ObservableCollection<ActiviteCombo>();
             listeActiviteId = new ObservableCollection<Seance>();
             listeCategorie = new ObservableCollection<Categorie>();
             listeSeance = new ObservableCollection<Seance>();
@@ -54,6 +56,7 @@ namespace ProjetFinal
             listeAdherent.Clear();
             listeActivite.Clear();
             listeActivite2.Clear();
+            listeActivite3.Clear();
             listeActiviteId.Clear();
             listeCategorie.Clear();
             listeSeance.Clear();
@@ -125,6 +128,7 @@ namespace ProjetFinal
         public ObservableCollection<Adherent> ListeAdherent { get { return listeAdherent; } }
         public ObservableCollection<Seance> ListeSeance { get { return listeSeance; } }
         public ObservableCollection<Activite> ListeActivite2 { get { return listeActivite2; } }
+        public ObservableCollection<ActiviteCombo> ListeActivite3 { get { return listeActivite3; } }
 
         /********************************************************************************************************************************************************************/
         /********************************************************************************************************************************************************************/
@@ -361,6 +365,7 @@ namespace ProjetFinal
 
 
                 listeActivite.Add(new Activite(id_Activite, cout_organisation, prix_vente, id_Admin, id_categorie, image, nom));
+                listeActivite3.Add(new ActiviteCombo(nom));
 
             }
             r3.Close();
@@ -550,7 +555,7 @@ namespace ProjetFinal
             getlisteAcivity();
         }
 
-        public void UpdateAdherent(string idAdherent, string nomAdh, string prenomAdh,string born)
+        public void UpdateAdherent(string idAdherent, string nomAdh, string prenomAdh,string adress, string born)
         {
             listeAdherent.Clear();
             {
@@ -564,6 +569,7 @@ namespace ProjetFinal
                     cmd.Parameters.AddWithValue("@idAdherent", idAdherent);
                     cmd.Parameters.AddWithValue("@nomAdh", nomAdh);
                     cmd.Parameters.AddWithValue("@prenomAdh", prenomAdh);
+                    cmd.Parameters.AddWithValue("@adress", adress);
                     cmd.Parameters.AddWithValue("@born", born);
                
 
@@ -581,22 +587,21 @@ namespace ProjetFinal
             }
             getlisteAdherent();
         }
-        public void AddAdherent(string idAdherent, string nomAdh, string prenomAdh, string born)
+        public void AddAdherent(string name, string surname, string adress, string dateBorn)
         {
             listeAdherent.Clear();
             {
                 try
                 {
                     // Créer la commande pour appeler la procédure stockée
-                    MySqlCommand cmd = new MySqlCommand("Modifier_Adherent", con);
+                    MySqlCommand cmd = new MySqlCommand("Inserer_Adherent", con);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Ajouter le paramètre pour la procédure stockée
-                    cmd.Parameters.AddWithValue("@idAdherent", idAdherent);
-                    cmd.Parameters.AddWithValue("@nomAdh", nomAdh);
-                    cmd.Parameters.AddWithValue("@prenomAdh", prenomAdh);
-                    cmd.Parameters.AddWithValue("@born", born);
-
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@surname", surname);
+                    cmd.Parameters.AddWithValue("@adress", adress);
+                    cmd.Parameters.AddWithValue("@dateBorn", dateBorn);
 
                     // Ouvrir la connexion et exécuter la commande
                     con.Open();

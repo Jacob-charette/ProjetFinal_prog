@@ -31,8 +31,7 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             lv_liste.ItemsSource = SingletonListe.getInstance().ListeActivite;
-            lv_listeAdherent.ItemsSource=SingletonListe.getInstance().ListeAdherent;
-            lvListeSeances.ItemsSource=SingletonListe.getInstance().ListeSeance;
+
 
 
         }
@@ -206,6 +205,17 @@ namespace ProjetFinal
             DialogueAjoutActivite dialog = new DialogueAjoutActivite();
             dialog.XamlRoot = lv_liste.XamlRoot;
             dialog.Title = "Ajout de l'activité";
+            dialog.PrimaryButtonText = "Ajouter";
+            dialog.CloseButtonText = "Annuler";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            ContentDialogResult resultat = await dialog.ShowAsync();
+        }
+
+        private async void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            DialogueAjoutAdherent dialog = new DialogueAjoutAdherent();
+            dialog.XamlRoot = lv_liste.XamlRoot;
+            dialog.Title = "Ajout de l'adherent";
             dialog.PrimaryButtonText = "Ajouter";
             dialog.CloseButtonText = "Annuler";
             dialog.DefaultButton = ContentDialogButton.Primary;
