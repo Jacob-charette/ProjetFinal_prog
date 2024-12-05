@@ -34,25 +34,28 @@ namespace ProjetFinal
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
-            if (ValidationInput.isNomValide(tbxNbrPlaceDispo.Text) == false)
-            {
-                tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre de place disponible ";
-                valide = false;
-            } 
-            if (ValidationInput.isPrixValide(tbxNbrPlaceDispo.Text) == false)
-            {
-                tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre valide ";
-                valide = false;
-            }
-            if (valide==true)
-            {
-
-            }
+           
 
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
 
+            if (ValidationInput.isNomValide(tbxNbrPlaceDispo.Text) == false)
+            {
+                tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre de place disponible ";
+                valide = false;
+            }
+            if (ValidationInput.isPrixValide(tbxNbrPlaceDispo.Text) == false)
+            {
+                tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre valide ";
+                valide = false;
+            }
+            if (valide == true)
+            {
+
+            }
+            //StateTrigger dateBorn = datePickerNaissance.ToString();
+           
         }
     }
 }
