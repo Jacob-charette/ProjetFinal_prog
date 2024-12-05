@@ -37,18 +37,21 @@ namespace ProjetFinal
         //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selectedItem = lv_liste.SelectedItem as Activite;
-            if (lv_liste.SelectedItem != null)
+            if (SessionManager.Instance.AdherentCon == true || SessionManager.Instance.AdminCon == true)
             {
-                DialogChoixSeance dialog = new DialogChoixSeance(selectedItem.Id_Activite);
-                dialog.Id_Activite = selectedItem.Id_Activite;
-                dialog.XamlRoot = lv_liste.XamlRoot;
-                dialog.Title = "Boite de dialog";
-                dialog.PrimaryButtonText = "Valider";
-                dialog.CloseButtonText = "Annuler";
-                dialog.DefaultButton = ContentDialogButton.Primary;
+                var selectedItem = lv_liste.SelectedItem as Activite;
+                if (lv_liste.SelectedItem != null)
+                {
+                    DialogChoixSeance dialog = new DialogChoixSeance(selectedItem.Id_Activite);
+                    dialog.Id_Activite = selectedItem.Id_Activite;
+                    dialog.XamlRoot = lv_liste.XamlRoot;
+                    dialog.Title = "Boite de dialog";
+                    dialog.PrimaryButtonText = "Valider";
+                    dialog.CloseButtonText = "Annuler";
+                    dialog.DefaultButton = ContentDialogButton.Primary;
               
-                ContentDialogResult resultat = await dialog.ShowAsync();
+                    ContentDialogResult resultat = await dialog.ShowAsync();
+                }
             }
         }
 

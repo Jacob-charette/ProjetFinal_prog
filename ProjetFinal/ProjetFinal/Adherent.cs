@@ -56,6 +56,13 @@ namespace ProjetFinal
             }
         }
 
+        public Visibility peutAfficherAdherent
+        {
+            get
+            {
+                return SessionManager.Instance.AdherentCon == true ? Visibility.Visible : Visibility.Collapsed;
+            }
+        }
 
 
         public override string ToString()
