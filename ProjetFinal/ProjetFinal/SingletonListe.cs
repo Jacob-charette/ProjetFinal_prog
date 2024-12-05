@@ -103,6 +103,7 @@ namespace ProjetFinal
             getlisteSeance();
 
             //Liste pour activite et adhérent
+            listeActivite2.Clear();
             MySqlCommand commande7 = new MySqlCommand();
             commande7.Connection = con;
             commande7.CommandText =     "SELECT c.nom AS Activite, COUNT(DISTINCT asn.id_Adherent) AS Nombre_Adherents " +
@@ -293,7 +294,15 @@ namespace ProjetFinal
             //Liste pour Seance
             MySqlCommand commande6 = new MySqlCommand();
             commande6.Connection = con;
-            commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
+            //commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
+            commande6.CommandText = $"SELECT s.* " +
+                $"FROM Seances s " +
+                $"WHERE s.id_Activite = 6 " +
+                $"AND s.nbr_place_disponible > 0 " +
+                $"AND s.id_seance NOT IN( " +
+                $"SELECT a_s.id_seance " +
+                $"FROM Adherent_Seance a_s " +
+                $"WHERE a_s.id_Adherent = '{SessionManager.Instance.Id_adherent_}')";
             con.Open();
             MySqlDataReader r6 = commande6.ExecuteReader();
             while (r6.Read())

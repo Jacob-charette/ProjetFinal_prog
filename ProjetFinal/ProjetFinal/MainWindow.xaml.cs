@@ -27,7 +27,7 @@ namespace ProjetFinal
         public MainWindow()
         {
             this.InitializeComponent();
-            mainFrame.Navigate(typeof(PageAccueil));
+            mainFrame.Navigate(typeof(PageAffichage));
         }
 
         private async void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
@@ -46,6 +46,19 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(PageSeance));
                     break;
                 case "iConnexion":
+
+                    break;
+                case "iCSV":
+                    // Si l'admin est connecté
+                    if (SessionManager.Instance.AdminCon == true)
+                    {
+
+                    }
+                    // Si l'admin n'est pas connecté
+                    else
+                    {
+                    
+                    }
 
                     break;
                 case "iDeconnexion":
