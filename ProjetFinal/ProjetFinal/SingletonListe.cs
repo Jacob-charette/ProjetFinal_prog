@@ -303,7 +303,7 @@ namespace ProjetFinal
                 int id_Activite = Convert.ToInt16(r6[6].ToString());
                 string id_Adherent = r6[7].ToString();
 
-                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
+                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite));
 
             }
             r6.Close();
@@ -386,9 +386,8 @@ namespace ProjetFinal
                 int note_appreciation = Convert.ToInt16(r5[4].ToString());
                 int id_Admin = Convert.ToInt16(r5[5].ToString());
                 int id_Activite = Convert.ToInt16(r5[6].ToString());
-                string id_Adherent = r5[7].ToString();
 
-                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite, id_Adherent));
+                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite));
 
             }
             r5.Close();

@@ -37,10 +37,8 @@
                             <TextBlock x:Name="IdAct" Visibility="Collapsed" Text="{x:Bind Id_Activite, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
                             <Image x:Name="img" Source="{x:Bind Image}" Height="150" Margin="10"/>
                             <TextBlock Text="{x:Bind Nom, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbx" Text="{x:Bind Prix_vente_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbx0" Text="{x:Bind Cout_organisation_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbx1" Text="{x:Bind Id_Admin, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbx2" Text="{x:Bind Id_categorie, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <TextBlock x:Name="tbx" Text="{x:Bind Prix_vente_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="tbx0" Text="{x:Bind Cout_organisation_string, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10" Visibility="{x:Bind peutAfficher}"/>
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
 
                                 <Button x:Name="EditActivity" Click="EditActivity_Click" Visibility="{x:Bind peutAfficher}">
