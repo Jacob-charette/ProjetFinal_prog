@@ -18,6 +18,9 @@
                    FontSize="40"
                    FontWeight="Light"
                    />
+            <CommandBar  Background="Transparent" IsOpen="False" DefaultLabelPosition="Right">
+                <AppBarButton Icon="Add" Label="Ajouter une activité" Click="AppBarButton_Click"  ToolTipService.ToolTip="Boite de dialogue"/>
+            </CommandBar>
             <TextBlock x:Name="tbl_sous_titre" 
                    Text="CLiquer sur l'une des activités pour choisir une séance" 
                    Margin="10" 
@@ -34,6 +37,7 @@
                                 Margin="15" 
                                 HorizontalAlignment="Stretch"
                                 >
+                           
                             <TextBlock x:Name="IdAct" Visibility="Collapsed" Text="{x:Bind Id_Activite, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
                             <Image x:Name="img" Source="{x:Bind Image}" Height="150" Margin="10"/>
                             <TextBlock Text="{x:Bind Nom, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
@@ -104,7 +108,8 @@
                                 Margin="15" 
                                 HorizontalAlignment="Stretch"
                                 >
-                            <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            
+                            <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay }" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
                             
                             <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Nbr_place_disponible, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>

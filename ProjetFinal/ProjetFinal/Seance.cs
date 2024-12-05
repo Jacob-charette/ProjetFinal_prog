@@ -11,6 +11,7 @@ namespace ProjetFinal
     {
         string date_organisation, heure_organisation;
         int idseance,nbr_place_disponible, note_appreciation, id_Admin, id_Activite;
+        
 
 
         public Seance()
@@ -22,7 +23,7 @@ namespace ProjetFinal
             this.note_appreciation = 0;
             this.id_Admin = 0;
             this.id_Activite = 0;
-            this.id_Adherent = "";
+    
 
         }
         public Seance(int idseance,string date_organisation, string heure_organisation, int nbr_place_disponible, int note_appreciation, int id_Admin, int id_Activite)
@@ -34,17 +35,17 @@ namespace ProjetFinal
             this.note_appreciation = note_appreciation;
             this.id_Admin = id_Admin;
             this.id_Activite = id_Activite;
-            this.id_Adherent = id_Adherent;
+         
         }
 
         public int Id_seance{ get => idseance; set => idseance = value; }
-        public string Date_organisation { get => date_organisation; set => date_organisation = value; }
-        public string Heure_organisation { get => heure_organisation; set => heure_organisation = value; }
+        public string Date_organisation { get => date_organisation.ToString().Substring(0,11); set => date_organisation = value; }
+        public string Heure_organisation { get => heure_organisation.ToString().Substring(0, 5); set => heure_organisation = value; }
         public int Nbr_place_disponible { get => nbr_place_disponible; set => nbr_place_disponible = value; }
         public int Note_appreciation { get => note_appreciation; set => note_appreciation = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
         public int Id_Activite { get => id_Activite; set => id_Activite = value; }
-        public string Id_Adherent { get => id_Adherent; set => id_Adherent = value; }
+      
         public Visibility peutAfficher
         {
             get

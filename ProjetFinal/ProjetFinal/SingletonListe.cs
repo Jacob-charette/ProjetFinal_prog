@@ -518,6 +518,38 @@ namespace ProjetFinal
             }
             getlisteAcivity();
         }
+
+        public void AddActivity(string name, string ima, int cost, int price)
+        {
+            listeActivite.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Inserer_Activite", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@ima", ima);
+                    cmd.Parameters.AddWithValue("@cost", cost);
+                    cmd.Parameters.AddWithValue("@price", price);
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteAcivity();
+        }
+
         public void UpdateAdherent(string idAdherent, string nomAdh, string prenomAdh,string born)
         {
             listeAdherent.Clear();
@@ -548,6 +580,65 @@ namespace ProjetFinal
                 }
             }
             getlisteAdherent();
+        }
+        public void AddAdherent(string idAdherent, string nomAdh, string prenomAdh, string born)
+        {
+            listeAdherent.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Modifier_Adherent", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@idAdherent", idAdherent);
+                    cmd.Parameters.AddWithValue("@nomAdh", nomAdh);
+                    cmd.Parameters.AddWithValue("@prenomAdh", prenomAdh);
+                    cmd.Parameters.AddWithValue("@born", born);
+
+
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteAdherent();
+        }
+        public void UpdateSeance(int idse, string dateIN, string heureIN)
+        {
+            listeSeance.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Modifier_Seance", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@idse", idse);
+                    cmd.Parameters.AddWithValue("@dateIN", dateIN);
+                    cmd.Parameters.AddWithValue("@heureIN", heureIN);
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteSeance();
         }
         public void deleteSeance(int idSeances)
         {

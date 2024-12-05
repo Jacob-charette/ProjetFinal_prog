@@ -182,15 +182,23 @@ namespace ProjetFinal
                 dialog.PrimaryButtonText = "Modifier";
                 dialog.CloseButtonText = "Annuler";
                 dialog.DefaultButton = ContentDialogButton.Primary;
-
                 ContentDialogResult resultat = await dialog.ShowAsync();
-            
-
         }
 
         private void lv_liste_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private async void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogueAjoutActivite dialog = new DialogueAjoutActivite();
+            dialog.XamlRoot = lv_liste.XamlRoot;
+            dialog.Title = "Ajout de l'activité";
+            dialog.PrimaryButtonText = "Ajouter";
+            dialog.CloseButtonText = "Annuler";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            ContentDialogResult resultat = await dialog.ShowAsync();
         }
     }
 }

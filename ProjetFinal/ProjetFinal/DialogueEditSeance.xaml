@@ -47,6 +47,7 @@
                 <DatePicker x:Name="datePickerOrganisation"  Margin="5" >Choisir une date d'organisation</DatePicker>
                 <TextBlock x:Name="tblErreurdatePickerOrganisation" Foreground="Red" FontSize="15" />
             </StackPanel>
+        <Frame x:Name="DialogueEditSeances"  />
         </Grid>
     </ScrollViewer>
 </ContentDialog>

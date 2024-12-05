@@ -22,7 +22,8 @@ namespace ProjetFinal
 {
     public sealed partial class DialogueEditSeance : ContentDialog
     {
-        bool valide;
+        bool valide=true;
+        int id = 0;
         public DialogueEditSeance(Seance seance)
         {
             this.InitializeComponent();
@@ -30,6 +31,7 @@ namespace ProjetFinal
             Rating.Value = seance.Note_appreciation;
             TimePickerOrgansiation.SelectedTime = TimeSpan.Parse(seance.Heure_organisation);
             datePickerOrganisation.SelectedDate=DateTime.Parse(seance.Date_organisation);
+            id = seance.Id_seance;
 
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
@@ -52,7 +54,10 @@ namespace ProjetFinal
             }
             if (valide == true)
             {
+                //StateTrigger dateBorn = datePickerNaissance.ToString();
+                SingletonListe.getInstance().UpdateSeance(id, datePickerOrganisation.Date.ToString("yyyy/MM/d"),TimePickerOrgansiation.Time.ToString());
 
+                DialogueEditSeances.Navigate(typeof(PageAffichage));
             }
             //StateTrigger dateBorn = datePickerNaissance.ToString();
            
