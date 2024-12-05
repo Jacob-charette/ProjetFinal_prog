@@ -17,5 +17,7 @@ namespace ProjetFinal
         public bool AdminCon { get; set; } = false;
         // Variable de session : adherentCon
         public bool AdherentCon { get; set; } = false;
+
+        public string Id_adherent_ { get; set; } = "";
     }
 }
