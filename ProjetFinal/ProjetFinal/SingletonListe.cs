@@ -100,6 +100,7 @@ namespace ProjetFinal
             getlisteSeance();
 
             //Liste pour activite et adhérent
+            listeActivite2.Clear();
             MySqlCommand commande7 = new MySqlCommand();
             commande7.Connection = con;
             commande7.CommandText =     "SELECT c.nom AS Activite, COUNT(DISTINCT asn.id_Adherent) AS Nombre_Adherents " +

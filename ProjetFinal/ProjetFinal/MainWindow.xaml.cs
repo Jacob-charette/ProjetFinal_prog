@@ -45,6 +45,19 @@ namespace ProjetFinal
                 case "iConnexion":
 
                     break;
+                case "iCSV":
+                    // Si l'admin est connecté
+                    if (SessionManager.Instance.AdminCon == true)
+                    {
+
+                    }
+                    // Si l'admin n'est pas connecté
+                    else
+                    {
+                    
+                    }
+
+                    break;
                 case "iDeconnexion":
                     SessionManager.Instance.AdherentCon = false;
                     SessionManager.Instance.AdminCon = false;
