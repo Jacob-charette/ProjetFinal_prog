@@ -26,7 +26,7 @@
            FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
            HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
 
-        <GridView x:Name="lv_liste" Grid.Row="2" Grid.Column="0"/>
+        <GridView x:Name="lv_liste" Grid.Row="2" Grid.Column="0" SelectionChanged="lv_liste_SelectionChanged"/>
         
         <TextBlock x:Name="oui"></TextBlock>
     </Grid>

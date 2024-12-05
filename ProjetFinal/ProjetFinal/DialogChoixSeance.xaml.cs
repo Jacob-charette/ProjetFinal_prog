@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Navigation;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,8 @@ namespace ProjetFinal
         bool valide;
         public int Id_Activite { get; internal set; }
         public int Nbr_place_disponible { get; internal set; }
+        public int Id_seance { get; internal set; }
+        public string Id_Adherent { get; internal set; }
 
         public DialogChoixSeance(int idActivite)
         {
@@ -34,21 +37,13 @@ namespace ProjetFinal
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            if (valide == true)
-            {
+            //if (valide == true)
+            //{
+            //    SingletonListe.getInstance().ajouterSeance(SessionManager.Instance.Id_adherent_, lv_liste_SelectionChanged(), DateTime.Now);
+            //}
 
-                //if (ActiviteNom != null)
-                //{
-                //Frame parentFrame = Window.Current.Content as Frame;
-                //    parentFrame.Navigate(typeof(DetailActivite), ActiviteNom);
-                //}
-                //else
-                //{
-                //    Debug.WriteLine("ActiviteNom est null.");
-                //}
+            
 
-
-            }
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
@@ -61,6 +56,29 @@ namespace ProjetFinal
             }
         }
 
+        private void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int id = 0;
+            if (lv_liste.SelectedItem is Seance selectedSeance)
+            {
+                id = selectedSeance.Id_seance;
+                valide = true;
+            }
 
+            if (valide)
+            {
+                if (id > 0)
+                {
+                    SingletonListe.getInstance().ajouterSeance(SessionManager.Instance.Id_adherent_, id, DateTime.Now);
+                }
+                else
+                {
+                    // Gérez le cas où aucun élément n'est sélectionné
+                    Debug.WriteLine("Aucune séance sélectionnée.");
+                }
+            }
+
+
+        }
     }
 }

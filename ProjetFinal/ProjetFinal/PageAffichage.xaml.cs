@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using ABI.Windows.UI;
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -39,6 +41,9 @@ namespace ProjetFinal
         {
             if (SessionManager.Instance.AdherentCon == true || SessionManager.Instance.AdminCon == true)
             {
+                tbl_sous_titre.Text = "CLiquer sur l'une des activités pour choisir une séance";
+                tbl_sous_titre.Foreground = new SolidColorBrush(Colors.Black);
+
                 var selectedItem = lv_liste.SelectedItem as Activite;
                 if (lv_liste.SelectedItem != null)
                 {
@@ -52,6 +57,12 @@ namespace ProjetFinal
               
                     ContentDialogResult resultat = await dialog.ShowAsync();
                 }
+            }
+            else
+            {
+                tbl_sous_titre.Text =  "Vous devez être connecté pour chosir une séance";
+                tbl_sous_titre.Foreground = new SolidColorBrush(Colors.Red);
+                tbl_sous_titre.FontSize = 30;
             }
         }
 

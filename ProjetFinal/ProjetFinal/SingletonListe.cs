@@ -301,7 +301,6 @@ namespace ProjetFinal
                 int note_appreciation = Convert.ToInt16(r6[4].ToString());
                 int id_Admin = Convert.ToInt16(r6[5].ToString());
                 int id_Activite = Convert.ToInt16(r6[6].ToString());
-                string id_Adherent = r6[7].ToString();
 
                 filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite));
 
@@ -603,6 +602,35 @@ namespace ProjetFinal
                 }
             }
             getlisteAdherent();
+        }
+
+        // Ajouter une séance -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+        public void ajouterSeance(string id_d_adherent, int id_d_seance, DateTime date_inscri)
+        {
+            try
+            {
+                string dateFormatted = date_inscri.ToString("yyyy-MM-dd");
+                MySqlCommand commande = new MySqlCommand();
+                commande.Connection = con;
+                commande.CommandText = $"insert into adherent_seance(id_Adherent, id_seance, date_inscription) " +
+                    $"values(@idAdherent, @idSeance, @dateInscri);";
+                    //$"values({id_d_adherent}, {id_d_seance}, {date_inscri});";
+
+                commande.Parameters.AddWithValue("@idAdherent", id_d_adherent);
+                commande.Parameters.AddWithValue("@idSeance", id_d_seance);
+                commande.Parameters.AddWithValue("@dateInscri", dateFormatted);
+
+                con.Open();
+                commande.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                // Le "if" sert à fermer la connection seulement si elle est ouverte
+                // (ne ferme pas la connection si elle est déjà fermé)
+                if (con.State == System.Data.ConnectionState.Open)
+                    con.Close();
+            }
         }
     }
 

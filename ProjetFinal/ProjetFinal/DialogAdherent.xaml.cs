@@ -77,6 +77,7 @@ namespace ProjetFinal
                     {
                         // Si la connexion en tant qu'admin est accepté
                         SessionManager.Instance.AdminCon = true;
+                        SessionManager.Instance.Id_adherent_ = tbxAdherent.Text;
                         DialogueConnexion.Navigate(typeof(PageAffichage));
                     }
                     else
@@ -93,6 +94,7 @@ namespace ProjetFinal
                     {
                         // Si la connexion en tant qu'adhérent est accepté
                         SessionManager.Instance.AdherentCon = true;
+                        SessionManager.Instance.Id_adherent_ = tbxAdherent.Text;
                         DialogueConnexion.Navigate(typeof(PageAffichage));
                     }
                     else

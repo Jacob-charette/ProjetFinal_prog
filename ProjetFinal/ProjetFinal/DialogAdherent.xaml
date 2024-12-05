@@ -32,9 +32,9 @@
             <CheckBox x:Name="Adherent" Content="Adherent" Checked="Adherent_Checked" Unchecked="Adherent_Unchecked"/>
             <CheckBox x:Name="Administrateur" Content="Administrateur" Checked="Administrateur_Checked" Unchecked="Administrateur_Unchecked" />
             <TextBlock x:Name="chkError" Foreground="Red" FontSize="15" />
-            <TextBox x:Name="tbxAdminNom" Visibility="Collapsed" Header="Identifiant du paticipant" VerticalAlignment="Top"/>
+            <TextBox x:Name="tbxAdminNom" Visibility="Collapsed" Header="Nom d'utilisateur" VerticalAlignment="Top"/>
             <TextBlock x:Name="tblAdminNomError" Foreground="Red" FontSize="15" />
-            <TextBox x:Name="tbxAdherent" Visibility="Collapsed" Header="Nom d'utilisateur Administrateur" VerticalAlignment="Top"/>
+            <TextBox x:Name="tbxAdherent" Visibility="Collapsed" Header="Identifiant de l'adhérent" VerticalAlignment="Top"/>
             <TextBlock x:Name="tblAdherenErreur" Foreground="Red" FontSize="15" />
             <PasswordBox x:Name="tbxAdminPassword" Visibility="Collapsed" Header="Mot de passe Administrateur" VerticalAlignment="Top"/>
             <TextBlock x:Name="tblAdminPasswordError" Foreground="Red" FontSize="15" />

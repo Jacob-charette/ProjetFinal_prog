@@ -50,6 +50,9 @@ namespace ProjetFinal
                     SessionManager.Instance.AdminCon = false;
                     mainFrame.Navigate(typeof(PageAffichage));
                     break;
+                case "iAdherent":
+                    mainFrame.Navigate(typeof(PageAdherents)); 
+                    break;
                 default:
                     break;
             }
