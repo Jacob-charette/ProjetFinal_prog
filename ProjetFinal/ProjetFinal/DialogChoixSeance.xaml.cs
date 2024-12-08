@@ -23,7 +23,7 @@ namespace ProjetFinal
     //lo
     public sealed partial class DialogChoixSeance : ContentDialog
     {
-        bool valide;
+        bool valide=true;
         public int Id_Activite { get; internal set; }
         public int Nbr_place_disponible { get; internal set; }
         public int Id_seance { get; internal set; }
@@ -35,12 +35,36 @@ namespace ProjetFinal
             lv_liste.ItemsSource = SingletonListe.getInstance().getIdActivite(idActivite);
         }
 
+        private void resetErreurs()
+        {
+            tblErreurSeance.Text = string.Empty;
+            tblErreurRating.Text = string.Empty;
+
+        }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            //if (valide == true)
-            //{
-            //    SingletonListe.getInstance().ajouterSeance(SessionManager.Instance.Id_adherent_, lv_liste_SelectionChanged(), DateTime.Now);
-            //}
+            resetErreurs();
+            int id = 0;
+            if (rating.Value < 0 && lv_liste.Items.Count > 0)
+            {
+                valide = false;
+                tblErreurRating.Text = "Veuillez noter la seance";
+            }
+            if (lv_liste.SelectedIndex< 0 && lv_liste.Items.Count>0)
+            {
+                valide = false;
+                tblErreurSeance.Text = "Veuillez choisir une seance ";
+            }
+            if (lv_liste.SelectedItem is Seance selectedSeance)
+            {
+                id = selectedSeance.Id_seance;
+                valide = true;
+            }
+
+            if (valide == true)
+            {
+              SingletonListe.getInstance().ajouterSeance(SessionManager.Instance.Id_adherent_,id, DateTime.Now,rating.Value);
+            }
 
             
 
@@ -69,7 +93,7 @@ namespace ProjetFinal
             {
                 if (id > 0)
                 {
-                    SingletonListe.getInstance().ajouterSeance(SessionManager.Instance.Id_adherent_, id, DateTime.Now);
+                    SingletonListe.getInstance().ajouterSeance(SessionManager.Instance.Id_adherent_, id, DateTime.Now,rating.Value);
                 }
                 else
                 {

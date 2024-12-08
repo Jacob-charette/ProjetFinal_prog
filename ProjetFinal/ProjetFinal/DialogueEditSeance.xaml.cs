@@ -28,7 +28,7 @@ namespace ProjetFinal
         {
             this.InitializeComponent();
             tbxNbrPlaceDispo.Text = seance.Nbr_place_disponible.ToString();
-            Rating.Value = seance.Note_appreciation;
+
             TimePickerOrgansiation.SelectedTime = TimeSpan.Parse(seance.Heure_organisation);
             datePickerOrganisation.SelectedDate=DateTime.Parse(seance.Date_organisation);
             id = seance.Id_seance;
@@ -36,12 +36,21 @@ namespace ProjetFinal
         }
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
-           
 
+            if (args.Result == ContentDialogResult.Primary)
+            {
+                if (valide == false)
+                    args.Cancel = true;
+            }
+        }
+        private void resetErreurs()
+        {
+            tblErreurNbrPlaceDispo.Text = string.Empty;     
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-
+            resetErreurs();
+            valide = true;
             if (ValidationInput.isNomValide(tbxNbrPlaceDispo.Text) == false)
             {
                 tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre de place disponible ";
@@ -55,7 +64,7 @@ namespace ProjetFinal
             if (valide == true)
             {
                 //StateTrigger dateBorn = datePickerNaissance.ToString();
-                SingletonListe.getInstance().UpdateSeance(id, datePickerOrganisation.Date.ToString("yyyy/MM/d"),TimePickerOrgansiation.Time.ToString());
+                SingletonListe.getInstance().UpdateSeance(id, datePickerOrganisation.Date.ToString("yyyy/MM/d"),TimePickerOrgansiation.Time.ToString(),Convert.ToInt32(tbxNbrPlaceDispo.Text));
 
                 DialogueEditSeances.Navigate(typeof(PageAffichage));
             }

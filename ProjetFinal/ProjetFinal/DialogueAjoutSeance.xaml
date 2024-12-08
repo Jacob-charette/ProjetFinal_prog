@@ -34,21 +34,18 @@
                 <TextBox x:Name="tbxNbrPlaceDispo"  Header="Nombre de place disponible" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblErreurNbrPlaceDispo" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" Padding="10">
-                <TextBox x:Name="tbxNoteAppreciation"  Header="Note d'appreciation"  VerticalAlignment="Top"/>
-                <TextBlock x:Name="tblErreurNoteAppreciation" Foreground="Red" FontSize="15" />
-            </StackPanel>
-            <ComboBox Header="Choisir l'activité" Grid.Row="3" x:Name="listeAct" SelectedIndex="0" Margin="10">
+            <ComboBox Header="Choisir l'activité" Grid.Row="2" x:Name="listeAct" SelectedIndex="0" >
              
             </ComboBox>
-            <StackPanel Grid.Row="4" Padding="10">
+            <StackPanel Grid.Row="3" Padding="10">
                 <TimePicker x:Name="TimePickerOrgansiation" MinuteIncrement="15" >Choisir heure de seance</TimePicker>
                 <TextBlock x:Name="tblErreurTimePickerOrgansiation" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="5"  Padding="10">
-                <DatePicker x:Name="datePickerOrganisation"  Margin="10" >Choisir une date d'organisation</DatePicker>
+            <StackPanel Grid.Row="4"  Padding="10">
+                <DatePicker x:Name="datePickerOrganisation"  >Choisir une date d'organisation</DatePicker>
                 <TextBlock x:Name="tblErreurdatePickerOrganisation" Foreground="Red" FontSize="15" />
             </StackPanel>
+            <Frame x:Name="DialogueAddSeance"  />
         </Grid>
     </ScrollViewer>
 </ContentDialog>

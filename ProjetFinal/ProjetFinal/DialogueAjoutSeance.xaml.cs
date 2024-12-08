@@ -27,14 +27,46 @@ namespace ProjetFinal
             this.InitializeComponent();
             listeAct.ItemsSource = SingletonListe.getInstance().ListeActivite3;
         }
+
         private void ContentDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
 
+            if (args.Result == ContentDialogResult.Primary)
+            {
+                if (valide == false)
+                    args.Cancel = true;
+            }
 
+        }
+        private void resetErreurs()
+        {
+            tblErreurTimePickerOrgansiation.Text = string.Empty;
+            tblErreurNbrPlaceDispo.Text = string.Empty;
+            tblErreurdatePickerOrganisation.Text = string.Empty;
         }
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            resetErreurs();
+            valide = true;
 
+            if (datePickerOrganisation.SelectedDate.HasValue)
+            {
+                valide = true;
+            }
+            else
+            {
+                valide = false;
+                tblErreurdatePickerOrganisation.Text = "Veuillez choisir une date de seance";
+            }
+            if (TimePickerOrgansiation.SelectedTime.HasValue)
+            {
+                valide = true;
+            }
+            else
+            {
+                valide = false;
+                tblErreurTimePickerOrgansiation.Text = "Veuillez choisir une heure de seance";
+            }
             if (ValidationInput.isNomValide(tbxNbrPlaceDispo.Text) == false)
             {
                 tblErreurNbrPlaceDispo.Text = "Veuillez entrer un nombre de place disponible ";
@@ -47,7 +79,8 @@ namespace ProjetFinal
             }
             if (valide == true)
             {
-           
+                SingletonListe.getInstance().AddSeance(datePickerOrganisation.Date.ToString("yyyy/MM/d"), TimePickerOrgansiation.Time.ToString(), Convert.ToInt32(tbxNbrPlaceDispo.Text),listeAct.SelectedItem.ToString());
+                DialogueAddSeance.Navigate(typeof(PageAffichage));
             }
         }
     }

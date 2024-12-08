@@ -5,7 +5,9 @@
     xmlns:local="using:ProjetFinal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+      PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    Closing="ContentDialog_Closing">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,15 +26,20 @@
 
         <TextBlock Text="Choisir la séance" Margin="15" FontSize="40" 
            FontFamily="Terminal" Grid.ColumnSpan="2" FontWeight="SemiBold"
-           HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+           HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
 
-        <GridView x:Name="lv_liste" Grid.Row="2" Grid.Column="0" SelectionChanged="lv_liste_SelectionChanged"/>
+        <GridView x:Name="lv_liste" Grid.Row="1" Grid.Column="0" SelectionChanged="lv_liste_SelectionChanged"/>
+        <TextBlock x:Name="tblErreurSeance" Grid.Row="2" Foreground="Red" FontSize="15" />
         <!-- À changer de place -->
-        <RatingControl AutomationProperties.Name="Simple RatingControl" 
+        <RatingControl Grid.Row="3" AutomationProperties.Name="Simple RatingControl" 
                        IsClearEnabled="False"
                        IsReadOnly="False" 
-                       Caption="Your rating"
+                       Caption="Notez nous"
+                       x:Name="rating"
+                       Background="Gold"
+                       BackgroundSizing="InnerBorderEdge"
                        />
+        <TextBlock x:Name="tblErreurRating" Grid.Row="4" Foreground="Red" FontSize="15" />
         
         <TextBlock x:Name="oui"></TextBlock>
     </Grid>

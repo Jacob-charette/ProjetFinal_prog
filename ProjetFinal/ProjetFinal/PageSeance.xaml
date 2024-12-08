@@ -33,7 +33,7 @@
 
                             <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Nbr_place_disponible, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Note_appreciation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                          
 
                             <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
                                 <Button x:Name="EditSeance" Click="EditSeance_Click" Visibility="{x:Bind peutAfficher}">

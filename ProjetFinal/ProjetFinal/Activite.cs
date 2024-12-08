@@ -102,5 +102,12 @@ namespace ProjetFinal
         {
             return " " ;
         }
+        public string StringCSV
+        {
+            get
+            {
+                return $"{Nom};{Prix_vente};{Cout_organisation}";
+            }
+        }
     }
 }

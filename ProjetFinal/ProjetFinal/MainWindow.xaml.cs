@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -30,7 +31,7 @@ namespace ProjetFinal
             mainFrame.Navigate(typeof(PageAffichage));
         }
 
-        private void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private async void navView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var item = (NavigationViewItem)args.SelectedItem;
 
@@ -52,12 +53,55 @@ namespace ProjetFinal
                     // Si l'admin est connecté
                     if (SessionManager.Instance.AdminCon == true)
                     {
+                        var picker = new Windows.Storage.Pickers.FileSavePicker();
 
+                        var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+                        WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
+
+                        picker.SuggestedFileName = "Adherent";
+                        picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
+
+                        // Crée le fichier
+                        Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+
+                        ObservableCollection<Adherent> listeAdherent = SingletonListe.getInstance().ListeAdherent;
+                        if (monFichier != null)
+                        {
+                            await Windows.Storage.FileIO.WriteLinesAsync(monFichier, listeAdherent.Select(x => x.StringCSV), Windows.Storage.Streams.UnicodeEncoding.Utf8);
+                        }
                     }
-                    // Si l'admin n'est pas connecté
                     else
                     {
-                    
+                        // Handle case where the admin is not connected
+                    }
+
+                    break;
+
+                case "iCSVAct":
+                    // Si l'admin est connecté
+                    if (SessionManager.Instance.AdminCon == true)
+                    {
+                        var picker = new Windows.Storage.Pickers.FileSavePicker();
+
+                        var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+                        WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
+
+                        picker.SuggestedFileName = "Activites";
+                        picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
+
+                        //crée le fichier
+                        Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+
+                        ObservableCollection<Activite> listeActivite = SingletonListe.getInstance().ListeActivite;
+                        if (monFichier != null)
+                        {
+                            await Windows.Storage.FileIO.WriteLinesAsync(monFichier, listeActivite.Select(x => x.StringCSV), Windows.Storage.Streams.UnicodeEncoding.Utf8);
+
+                        }
+                    }
+                    else
+                    {
+                        // Handle case where the admin is not connected
                     }
 
                     break;
@@ -67,19 +111,20 @@ namespace ProjetFinal
                     mainFrame.Navigate(typeof(PageAffichage));
                     break;
                 case "iAdherent":
-                    mainFrame.Navigate(typeof(PageAdherents)); 
+                    mainFrame.Navigate(typeof(PageAdherents));
                     break;
                 default:
                     break;
             }
-            
+
         }
+
 
         private async void navView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var item = args.InvokedItem;
 
-            if(item.ToString() == "Connexion")
+            if (item.ToString() == "Connexion")
             {
                 DialogAdherent dialog = new DialogAdherent();
                 dialog.XamlRoot = nvih_text.XamlRoot;
@@ -90,6 +135,23 @@ namespace ProjetFinal
 
                 ContentDialogResult resultat = await dialog.ShowAsync();
             }
+        }
+        private async void BtnAdherent_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new Windows.Storage.Pickers.FileSavePicker();
+
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WinRT.Interop.InitializeWithWindow.Initialize(picker, hWnd);
+
+            picker.SuggestedFileName = "Adherent";
+            picker.FileTypeChoices.Add("Fichier CSV", new List<string>() { ".csv" });
+
+            //crée le fichier
+            Windows.Storage.StorageFile monFichier = await picker.PickSaveFileAsync();
+
+            ObservableCollection<Adherent> listeAdherent = SingletonListe.getInstance().ListeAdherent;
+
+            await Windows.Storage.FileIO.WriteLinesAsync(monFichier, listeAdherent.Select(x => x.StringCSV), Windows.Storage.Streams.UnicodeEncoding.Utf8);
         }
     }
 }

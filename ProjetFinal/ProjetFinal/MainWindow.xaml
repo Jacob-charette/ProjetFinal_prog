@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid>
+        
         <NavigationView PaneTitle="Navigation" x:Name="navView"
                         SelectionChanged="navView_SelectionChanged" ItemInvoked="navView_ItemInvoked">
             <NavigationView.MenuItems>
@@ -18,14 +19,17 @@
                 <NavigationViewItem Content="Page des Séances" x:Name="iSeance" Icon="ViewAll"/>
                 <NavigationViewItemSeparator />
                 <NavigationViewItemSeparator />
-                <NavigationViewItem Content="CSV" x:Name="iCSV" Icon="Download"/>
+                <NavigationViewItem Content="CSV Adherent" x:Name="iCSV" Icon="Download"/>
+                <NavigationViewItem Content="CSV Activite" x:Name="iCSVAct" Icon="Download"/>
                 <NavigationViewItem Content="Connexion" x:Name="iConnexion" Icon="GoToStart"/>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Content="Déconnexion" x:Name="iDeconnexion" Icon="Switch" />
                 <NavigationViewItem Content="Aide" x:Name="iAide" Icon="Help" />
+                
             </NavigationView.FooterMenuItems>
+            
 
             <Frame x:Name="mainFrame"/>
         </NavigationView>

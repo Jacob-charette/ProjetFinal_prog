@@ -311,11 +311,11 @@ namespace ProjetFinal
                 string date_organisation = r6[1].ToString();
                 string heure_organisation = r6[2].ToString();
                 int nbr_place_disponible = Convert.ToInt16(r6[3].ToString());
-                int note_appreciation = Convert.ToInt16(r6[4].ToString());
-                int id_Admin = Convert.ToInt16(r6[5].ToString());
-                int id_Activite = Convert.ToInt16(r6[6].ToString());
+
+                int id_Admin = Convert.ToInt16(r6[4].ToString());
+                int id_Activite = Convert.ToInt16(r6[5].ToString());
                
-                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite));
+                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite));
 
             }
             r6.Close();
@@ -396,12 +396,10 @@ namespace ProjetFinal
                 string date_organisation = r5[1].ToString();
                 string heure_organisation = r5[2].ToString();
                 int nbr_place_disponible = Convert.ToInt16(r5[3].ToString());
-                int note_appreciation = Convert.ToInt16(r5[4].ToString());
-                int id_Admin = Convert.ToInt16(r5[5].ToString());
-                int id_Activite = Convert.ToInt16(r5[6].ToString());
+                int id_Admin = Convert.ToInt16(r5[4].ToString());
+                int id_Activite = Convert.ToInt16(r5[5].ToString());
                
-
-                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, note_appreciation, id_Admin, id_Activite));
+                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite));
 
             }
             r5.Close();
@@ -626,7 +624,7 @@ namespace ProjetFinal
             }
             getlisteAdherent();
         }
-        public void UpdateSeance(int idse, string dateIN, string heureIN)
+        public void UpdateSeance(int idse, string dateIN, string heureIN,int nbr)
         {
             listeSeance.Clear();
             {
@@ -640,6 +638,36 @@ namespace ProjetFinal
                     cmd.Parameters.AddWithValue("@idse", idse);
                     cmd.Parameters.AddWithValue("@dateIN", dateIN);
                     cmd.Parameters.AddWithValue("@heureIN", heureIN);
+                    cmd.Parameters.AddWithValue("@nbr", nbr);
+                    // Ouvrir la connexion et exécuter la commande
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
+            }
+            getlisteSeance();
+        }
+        public void AddSeance(string dateIN, string heureIN,int placeIN,string nomAct)
+        {
+            listeSeance.Clear();
+            {
+                try
+                {
+                    // Créer la commande pour appeler la procédure stockée
+                    MySqlCommand cmd = new MySqlCommand("Inserer_Seance", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Ajouter le paramètre pour la procédure stockée
+                    cmd.Parameters.AddWithValue("@dateIN", dateIN);
+                    cmd.Parameters.AddWithValue("@heureIN", heureIN);
+                    cmd.Parameters.AddWithValue("@placeIN", placeIN);
+                    cmd.Parameters.AddWithValue("@nomAct", nomAct);
                     // Ouvrir la connexion et exécuter la commande
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -711,20 +739,21 @@ namespace ProjetFinal
         }
 
         // Ajouter une séance -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-        public void ajouterSeance(string id_d_adherent, int id_d_seance, DateTime date_inscri)
+        public void ajouterSeance(string id_d_adherent, int id_d_seance, DateTime date_inscri,double rating)
         {
             try
             {
                 string dateFormatted = date_inscri.ToString("yyyy-MM-dd");
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
-                commande.CommandText = $"insert into adherent_seance(id_Adherent, id_seance, date_inscription) " +
-                    $"values(@idAdherent, @idSeance, @dateInscri);";
+                commande.CommandText = $"insert into adherent_seance(id_Adherent, id_seance, date_inscription,note_appreciation) " +
+                    $"values(@idAdherent, @idSeance, @dateInscri,@rating);";
                     //$"values({id_d_adherent}, {id_d_seance}, {date_inscri});";
 
                 commande.Parameters.AddWithValue("@idAdherent", id_d_adherent);
                 commande.Parameters.AddWithValue("@idSeance", id_d_seance);
                 commande.Parameters.AddWithValue("@dateInscri", dateFormatted);
+                commande.Parameters.AddWithValue("@rating", rating);
 
                 con.Open();
                 commande.ExecuteNonQuery();

@@ -34,11 +34,7 @@
                 <TextBox x:Name="tbxNbrPlaceDispo"  Header="Nombre de place disponible" VerticalAlignment="Top"/>
                 <TextBlock x:Name="tblErreurNbrPlaceDispo" Foreground="Red" FontSize="15" />
             </StackPanel>
-            <StackPanel Grid.Row="4"  Padding="5">
-                <RatingControl x:Name="Rating" AutomationProperties.Name="Simple RatingControl"  IsClearEnabled="False" IsReadOnly="true" Caption="Note d'appreciation"/>
-
-
-            </StackPanel>
+          
             <StackPanel Grid.Row="3" Padding="5">
                 <TimePicker x:Name="TimePickerOrgansiation" MinuteIncrement="15" Margin="5">Choisir heure de seance</TimePicker>
                 <TextBlock x:Name="tblErreurTimePickerOrgansiation" Foreground="Red" FontSize="15" />

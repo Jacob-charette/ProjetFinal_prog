@@ -57,7 +57,6 @@ namespace ProjetFinal
             if (datePickerNaissance.SelectedDate.HasValue)
             {
                valide = true;
-
             }
             else
             {

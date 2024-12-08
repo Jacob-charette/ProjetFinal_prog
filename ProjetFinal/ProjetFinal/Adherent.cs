@@ -69,5 +69,12 @@ namespace ProjetFinal
         {
             return nom;
         }
+        public string StringCSV
+        {
+            get
+            {
+                return $"{Prenom};{Nom};{Id_Adherent};{Date_naissance};{Adresse}";
+            }
+        }
     }
 }
