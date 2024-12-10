@@ -77,7 +77,7 @@ namespace ProjetFinal
                     {
                         // Si la connexion en tant qu'admin est accepté
                         SessionManager.Instance.AdminCon = true;
-                        SessionManager.Instance.Id_adherent_ = tbxAdherent.Text;
+                        SessionManager.Instance.Utili_admin_ = tbxAdminNom.Text;
                         DialogueConnexion.Navigate(typeof(PageAffichage));
                     }
                     else

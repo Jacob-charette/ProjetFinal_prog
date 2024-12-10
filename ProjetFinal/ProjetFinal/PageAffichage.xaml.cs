@@ -42,6 +42,21 @@ namespace ProjetFinal
                 cmb_ajouter.Visibility = Visibility.Collapsed;
             }
 
+            if (SessionManager.Instance.AdminCon == true)
+            {
+                tbl_name.Text = "Bonjour " + SingletonListe.getInstance().getUtilisateurAdminAdherent();
+                tbl_name.Foreground = new SolidColorBrush(Colors.Blue);
+            }
+            else if (SessionManager.Instance.AdherentCon == true)
+            {
+                tbl_name.Text = "Bonjour " + SingletonListe.getInstance().getNomPrenomAdherent();
+                tbl_name.Foreground = new SolidColorBrush(Colors.Blue);
+            }
+            else
+            {
+                tbl_name.Text = "";
+            }
+
         }
         //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
