@@ -52,8 +52,12 @@
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local:Activite">
                         <StackPanel Orientation="Vertical" Width="200" Background="AliceBlue" 
-                                Margin="15" 
+                                Padding="15" 
+                                    Margin="15"
                                 HorizontalAlignment="Stretch"
+                                   CornerRadius="20"
+                                    BorderThickness="8"
+                                    BorderBrush="PaleTurquoise"
                                 >
 
                             <TextBlock x:Name="IdAct" Visibility="Collapsed" Text="{x:Bind Id_Activite, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>

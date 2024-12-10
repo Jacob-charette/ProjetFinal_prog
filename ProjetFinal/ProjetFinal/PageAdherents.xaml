@@ -31,22 +31,45 @@
                 <!-- Template-->
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="local:Adherent">
-                        <StackPanel Orientation="Vertical" Width="200" Background="AliceBlue"
-                                Margin="15" 
+                        <StackPanel Orientation="Vertical" Width="250" Background="AliceBlue"
+                                Padding="15" 
+                                    Margin="15"
                                 HorizontalAlignment="Stretch"
+                                   CornerRadius="20"
+                                    BorderThickness="12"
+                                    BorderBrush="PaleGoldenrod"
                                 >
-                            <TextBlock Text="{x:Bind Id_Adherent, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Nom, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Prenom, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Adresse, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentBirthday" Text="{x:Bind Date_naissance, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentBirthdayAge" Text="{x:Bind Age, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
-                            <Button x:Name="EditAdherent" Click="EditAdherent_Click"  Visibility="{x:Bind peutAfficher}">
-                                <SymbolIcon Symbol="Edit" Foreground="blue"/>
-                            </Button>
-                            <Button x:Name="DelAdherent" Click="DelAdherent_Click"  Visibility="{x:Bind peutAfficher}">
-                                <SymbolIcon Symbol="Delete" Foreground="Red"/>
-                            </Button>
+                            <TextBlock Text="{x:Bind Id_Adherent, Mode=OneWay}" FontSize="20" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Nom:</TextBlock>
+                                <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Nom, Mode=OneWay}" Foreground="Black"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Prenom:</TextBlock>
+                                <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Prenom, Mode=OneWay}" Foreground="Black"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Adresse:</TextBlock>
+                                <TextBlock x:Name="tbxAdherentAdresse" Text="{x:Bind Adresse, Mode=OneWay}" Foreground="Black"  TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Naissance:</TextBlock>
+                                <TextBlock x:Name="tbxAdherentBirthday" Text="{x:Bind Date_naissance, Mode=OneWay}" Foreground="Black" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Age:</TextBlock>
+                                <TextBlock x:Name="tbxAdherentBirthdayAge" Text="{x:Bind Age, Mode=OneWay}" Foreground="Black"/>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                <Button x:Name="EditAdherent" Click="EditAdherent_Click"  Visibility="{x:Bind peutAfficher}">
+                                    <SymbolIcon Symbol="Edit" Foreground="blue"/>
+                                </Button>
+                                <SplitButton></SplitButton>
+         
+                                <Button x:Name="DelAdherent" Click="DelAdherent_Click"  Visibility="{x:Bind peutAfficher}">
+                                    <SymbolIcon Symbol="Delete" Foreground="Red"/>
+                                </Button>
+                            </StackPanel>
 
                         </StackPanel>
                     </DataTemplate>

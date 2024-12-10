@@ -41,10 +41,10 @@ namespace ProjetFinal
         }
 
         public string Id_Adherent { get => id_Adherent; set => id_Adherent = value; }
-        public string Nom { get => nom; set => nom = value; }
+        public string Nom { get =>nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
         public string Adresse { get => adresse; set => adresse = value; }
-        public string Date_naissance { get => date_naissance; set => date_naissance = value; }
+        public string Date_naissance { get =>date_naissance.ToString().Substring(0, 11); set => date_naissance = value; }
         public int Age { get => age; set => age = value; }
         public int Id_Admin { get => id_Admin; set => id_Admin = value; }
 

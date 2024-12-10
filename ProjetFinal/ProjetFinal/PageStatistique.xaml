@@ -23,7 +23,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock x:Name="tbl_titre" 
                    Text="Page des statistiques" 
                    Margin="25" 
@@ -41,14 +41,18 @@
         <TextBlock x:Name="tbl_MoyNoteApp" Text="Moyenne des notes d'appréciations" FontSize="15" Margin="15" Grid.Row="2" Grid.Column="1"/>
         <TextBlock x:Name="tbl_AdherentPlusActif" Text="l'adhérent le plus actif" FontSize="15" Margin="15" Grid.Row="2" Grid.Column="3"/>
 
-        <TextBlock x:Name="tbl_sous_titre" Text="Nombre d'adhérents par activité" HorizontalAlignment="Center" FontSize="20" Foreground="DodgerBlue" Margin="20" Grid.Row="3" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="tbl_sous_titre" Text="Nombre d'adhérents par activité" HorizontalAlignment="Center" FontSize="30" Foreground="DodgerBlue" Margin="20" Grid.Row="3" Grid.ColumnSpan="3"/>
         <GridView x:Name="lv_liste" Grid.Row="4" Grid.ColumnSpan="3">
             <!-- Template-->
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:Activite">
                     <StackPanel Orientation="Vertical" Width="200" Background="AliceBlue"
-                                Margin="15" 
+                                Padding="15" 
+                                    Margin="15"
                                 HorizontalAlignment="Stretch"
+                                   CornerRadius="20"
+                                    BorderThickness="12"
+                                    BorderBrush="Navy"
                                 >
                         <TextBlock Text="{x:Bind Nom, Mode=OneWay}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="SlateGray" Margin="5,5,5,10"/>
                         <TextBlock x:Name="tbx" Text="{x:Bind Nombre_Adherent, Mode=TwoWay}" HorizontalAlignment="Center" Foreground="Black" Margin="5,5,5,10"/>
