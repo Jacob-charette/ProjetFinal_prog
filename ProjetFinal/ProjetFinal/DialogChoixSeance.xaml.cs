@@ -32,7 +32,10 @@ namespace ProjetFinal
         public DialogChoixSeance(int idActivite)
         {
             this.InitializeComponent();
-            lv_liste.ItemsSource = SingletonListe.getInstance().getIdActivite(idActivite);
+            
+                lv_liste.ItemsSource = SingletonListe.getInstance().getIdActivite(idActivite);
+            
+            
         }
 
         private void resetErreurs()

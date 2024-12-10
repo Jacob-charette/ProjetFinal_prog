@@ -61,7 +61,7 @@ namespace ProjetFinal
         //a
         private async void lv_liste_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (SessionManager.Instance.AdherentCon == true || SessionManager.Instance.AdminCon == true)
+            if (SessionManager.Instance.AdherentCon == true /*|| SessionManager.Instance.AdminCon == true*/)
             {
                 tbl_sous_titre.Text = "CLiquer sur l'une des activités pour choisir une séance";
                 tbl_sous_titre.Foreground = new SolidColorBrush(Colors.Black);

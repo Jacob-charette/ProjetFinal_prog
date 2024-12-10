@@ -303,23 +303,23 @@ namespace ProjetFinal
                 $"AND s.id_seance NOT IN( " +
                 $"SELECT a_s.id_seance " +
                 $"FROM Adherent_Seance a_s " +
-                $"WHERE a_s.id_Adherent = '{SessionManager.Instance.Id_adherent_}')";
+                $"WHERE a_s.id_Adherent = '{SessionManager.Instance.Id_adherent_}');";
             con.Open();
             MySqlDataReader r6 = commande6.ExecuteReader();
             while (r6.Read())
             {
                 try
                 {
-                int id = Convert.ToInt16(r6[0].ToString());
+                int id_seance = Convert.ToInt16(r6[0].ToString());
                 string date_organisation = r6[1].ToString();
                 string heure_organisation = r6[2].ToString();
                 int nbr_place_disponible = Convert.ToInt16(r6[3].ToString());
 
                 int id_Admin = Convert.ToInt16(r6[4].ToString());
                 int id_Activite = Convert.ToInt16(r6[5].ToString());
-                string nomAct = r6[6].ToString();
 
-                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,nomAct));
+
+                filteredSeances.Add(new Seance(id_seance, date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,"" ));
                 }
                 catch (Exception ex)
                 {
@@ -338,8 +338,8 @@ namespace ProjetFinal
                 // Gérer les erreurs
                 Console.WriteLine("Erreur : " + ex.Message);
                 con.Close();
-            }
-            return null;
+                return null;
+            }  
         }
         
 
