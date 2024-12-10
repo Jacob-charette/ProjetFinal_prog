@@ -19,5 +19,7 @@ namespace ProjetFinal
         public bool AdherentCon { get; set; } = false;
 
         public string Id_adherent_ { get; set; } = "";
+
+        public string Utili_admin_ { get; set; } = "";
     }
 }

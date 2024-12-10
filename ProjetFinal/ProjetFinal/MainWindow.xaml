@@ -18,9 +18,9 @@
                 <NavigationViewItem Content="Page des Adérents" x:Name="iAdherent" Icon="People"/>
                 <NavigationViewItem Content="Page des Séances" x:Name="iSeance" Icon="ViewAll"/>
                 <NavigationViewItemSeparator />
-                <NavigationViewItemSeparator />
                 <NavigationViewItem Content="CSV Adherent" x:Name="iCSV" Icon="Download"/>
                 <NavigationViewItem Content="CSV Activite" x:Name="iCSVAct" Icon="Download"/>
+                <NavigationViewItemSeparator />
                 <NavigationViewItem Content="Connexion" x:Name="iConnexion" Icon="GoToStart"/>
             </NavigationView.MenuItems>
 

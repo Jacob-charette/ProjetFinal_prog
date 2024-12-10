@@ -289,6 +289,7 @@ namespace ProjetFinal
 
         public ObservableCollection<Seance> getIdActivite(int _id_activite)
         {
+            try { 
             ObservableCollection<Seance> filteredSeances = new ObservableCollection<Seance>();
 
             //Liste pour Seance
@@ -307,6 +308,8 @@ namespace ProjetFinal
             MySqlDataReader r6 = commande6.ExecuteReader();
             while (r6.Read())
             {
+                try
+                {
                 int id = Convert.ToInt16(r6[0].ToString());
                 string date_organisation = r6[1].ToString();
                 string heure_organisation = r6[2].ToString();
@@ -316,15 +319,27 @@ namespace ProjetFinal
                 int id_Activite = Convert.ToInt16(r6[5].ToString());
                 string nomAct = r6[6].ToString();
 
-
-
                 filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,nomAct));
-
+                }
+                catch (Exception ex)
+                {
+                    // Gérer les erreurs
+                    Console.WriteLine("Erreur : " + ex.Message);
+                    con.Close();
+                }
             }
             r6.Close();
             r6.Close();
             con.Close();
             return filteredSeances;
+            }
+            catch (Exception ex)
+            {
+                // Gérer les erreurs
+                Console.WriteLine("Erreur : " + ex.Message);
+                con.Close();
+            }
+            return null;
         }
         
 
@@ -352,6 +367,49 @@ namespace ProjetFinal
             }
             r4.Close();
             con.Close();
+        }
+
+        public string getNomPrenomAdherent()
+        {
+            //Liste pour adherent
+            MySqlCommand commande_ = new MySqlCommand();
+            commande_.Connection = con;
+            commande_.CommandText = $"Select nom, prenom from adherents where id_Adherent = '{SessionManager.Instance.Id_adherent_}'";
+            con.Open();
+            MySqlDataReader r_ = commande_.ExecuteReader();
+            while (r_.Read())
+            {
+                string nom = r_[0].ToString();
+                string prenom = r_[1].ToString();
+                r_.Close();
+                con.Close();
+                return $"{prenom} {nom}";
+
+            }
+            r_.Close();
+            con.Close();
+            return $"Adhérent";
+        }
+
+        public string getUtilisateurAdminAdherent()
+        {
+            //Liste pour adherent
+            MySqlCommand commande_ = new MySqlCommand();
+            commande_.Connection = con;
+            commande_.CommandText = $"Select nom_utilisateur from administrateur where nom_utilisateur = '{SessionManager.Instance.Utili_admin_}'";
+            con.Open();
+            MySqlDataReader r_ = commande_.ExecuteReader();
+            while (r_.Read())
+            {
+                string nom_utilisateur = r_[0].ToString();
+                r_.Close();
+                con.Close();
+                return $"{nom_utilisateur}";
+
+            }
+            r_.Close();
+            con.Close();
+            return $"Adhérent";
         }
 
         public void getlisteAcivity()

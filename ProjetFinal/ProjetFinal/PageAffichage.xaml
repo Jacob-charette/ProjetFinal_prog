@@ -11,6 +11,18 @@
     <ScrollViewer>
         <!---l-->
         <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="tbl_name" 
+                   Text="" 
+                   Margin="10" 
+                   HorizontalAlignment="Center" 
+                   FontSize="30"
+                   />
+            <Line 
+                X1="0" Y1="0" 
+                X2="1500" Y2="0" 
+                Stroke="Black" 
+                StrokeThickness="2" 
+                />
             <TextBlock x:Name="tbl_titre" 
                    Text="Liste des activités" 
                    Margin="10" 
