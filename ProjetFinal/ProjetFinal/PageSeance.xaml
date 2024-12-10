@@ -30,7 +30,8 @@
                                 HorizontalAlignment="Stretch"
                                 >
                             <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay }" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
-
+                            <TextBlock Text="{x:Bind NomAct, Mode=OneWay }" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
+    
                             <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                             <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Nbr_place_disponible, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
                           

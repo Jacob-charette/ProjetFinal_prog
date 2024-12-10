@@ -314,8 +314,11 @@ namespace ProjetFinal
 
                 int id_Admin = Convert.ToInt16(r6[4].ToString());
                 int id_Activite = Convert.ToInt16(r6[5].ToString());
-               
-                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite));
+                string nomAct = r6[6].ToString();
+
+
+
+                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,nomAct));
 
             }
             r6.Close();
@@ -386,7 +389,7 @@ namespace ProjetFinal
             //Liste pour seance
             MySqlCommand commande5 = new MySqlCommand();
             commande5.Connection = con;
-            commande5.CommandText = "Select * from seances";
+            commande5.CommandText = "select id_seance,date_organisation,heure_organisation,nbr_place_disponible,a.id_Admin,a.id_Activite,c.nom from seances\r\ninner join activites a on seances.id_Activite = a.id_Activite\r\ninner join categories c on a.id_categorie = c.id_categorie;";
             con.Open();
             MySqlDataReader r5 = commande5.ExecuteReader();
             while (r5.Read())
@@ -398,8 +401,9 @@ namespace ProjetFinal
                 int nbr_place_disponible = Convert.ToInt16(r5[3].ToString());
                 int id_Admin = Convert.ToInt16(r5[4].ToString());
                 int id_Activite = Convert.ToInt16(r5[5].ToString());
+                string nomAct=r5[6].ToString();
                
-                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite));
+                listeSeance.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,nomAct));
 
             }
             r5.Close();
