@@ -314,11 +314,11 @@ namespace ProjetFinal
 
                 int id_Admin = Convert.ToInt16(r6[4].ToString());
                 int id_Activite = Convert.ToInt16(r6[5].ToString());
-                string nomAct = r6[6].ToString();
+          
 
 
 
-                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,nomAct));
+                filteredSeances.Add(new Seance(id,date_organisation, heure_organisation, nbr_place_disponible, id_Admin, id_Activite,""));
 
             }
             r6.Close();

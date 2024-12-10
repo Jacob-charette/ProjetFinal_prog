@@ -41,8 +41,8 @@ namespace ProjetFinal
         }
 
         public int Id_seance{ get => idseance; set => idseance = value; }
-        public string Date_organisation { get =>"Date d'organisation: "+ date_organisation.ToString().Substring(0,11); set => date_organisation = value; }
-        public string Heure_organisation { get => "Heure d'organisation: " + heure_organisation.ToString().Substring(0, 5); set => heure_organisation = value; }
+        public string Date_organisation { get => date_organisation.ToString().Substring(0,11); set => date_organisation = value; }
+        public string Heure_organisation { get => heure_organisation.ToString().Substring(0, 5); set => heure_organisation = value; }
         public string NomAct { get => nomAct; set => nomAct = value; }
         public int Nbr_place_disponible { get => nbr_place_disponible; set => nbr_place_disponible = value; }
   

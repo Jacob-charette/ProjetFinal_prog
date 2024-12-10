@@ -31,20 +31,29 @@
                                 HorizontalAlignment="Stretch"
                                     BorderBrush="Blue"
                                     BorderThickness="12"
+                                    CornerRadius="20"
                                 >
                             <TextBlock Text="{x:Bind NomAct, Mode=OneWay }" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Foreground="red" Margin="5,5,5,10"/>
-                            <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay }" Foreground="Black" Margin="5,5,5,10"/>
-                            <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=TwoWay}" Foreground="Black" Margin="5,5,5,10"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Date d'oganisation: </TextBlock>
+                                <TextBlock Text="{x:Bind Date_organisation, Mode=OneWay }" Foreground="Black" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
+                                <TextBlock Foreground="Black">Heure d'organisation: </TextBlock>
+                                <TextBlock x:Name="tbxAdherentNom" Text="{x:Bind Heure_organisation, Mode=OneWay}" Foreground="Black"/>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,10">
                                 <TextBlock Foreground="Black">Place disponible:</TextBlock>
                                 <TextBlock x:Name="tbxAdherentPrenom" Text="{x:Bind Nbr_place_disponible, Mode=TwoWay}" Foreground="Black"/>
                             </StackPanel>
 
 
-                            <StackPanel HorizontalAlignment="center" Background="White" Orientation="Horizontal">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                                 <Button x:Name="EditSeance" Click="EditSeance_Click" Visibility="{x:Bind peutAfficher}">
                                     <SymbolIcon Symbol="Edit" Foreground="blue"/>
                                 </Button>
+                                <SplitButton></SplitButton>
+                                <SplitButton></SplitButton>
                                 <Button x:Name="DelSeance" Click="DelSeance_Click" Visibility="{x:Bind peutAfficher}">
                                     <SymbolIcon Symbol="Delete" Foreground="Red"/>
                                 </Button>
