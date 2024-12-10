@@ -238,7 +238,7 @@ namespace ProjetFinal
             {
                 MySqlCommand commande = new MySqlCommand();
                 commande.Connection = con;
-                commande.CommandText = "SELECT AVG(note_appreciation) FROM seances;";
+                commande.CommandText = "SELECT AVG(note_appreciation) FROM adherent_seance;";
 
                 con.Open();
                 moyNoteApp = Convert.ToInt32(commande.ExecuteScalar());
@@ -297,7 +297,7 @@ namespace ProjetFinal
             //commande6.CommandText = $"Select * from seances where id_Activite = {_id_activite} AND nbr_place_disponible > 0";
             commande6.CommandText = $"SELECT s.* " +
                 $"FROM Seances s " +
-                $"WHERE s.id_Activite = 6 " +
+                $"WHERE s.id_Activite = {_id_activite} " +
                 $"AND s.nbr_place_disponible > 0 " +
                 $"AND s.id_seance NOT IN( " +
                 $"SELECT a_s.id_seance " +
