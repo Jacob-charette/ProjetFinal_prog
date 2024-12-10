@@ -30,7 +30,7 @@
 
         <GridView x:Name="lv_liste" Grid.Row="1" Grid.Column="0" SelectionChanged="lv_liste_SelectionChanged"/>
         <TextBlock x:Name="tblErreurSeance" Grid.Row="2" Foreground="Red" FontSize="15" />
-        <TextBlock x:Name="tbl_adminCondition" Text="" Grid.Row="1" Grid.Column="0"/>
+        
         <!-- À changer de place -->
         <RatingControl Grid.Row="3" AutomationProperties.Name="Simple RatingControl" 
                        IsClearEnabled="False"
